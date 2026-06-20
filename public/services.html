@@ -1,0 +1,1249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Services & Pricing — Boostoraa</title>
+  <link rel="icon" type="image/png" href="https://cdnfiles.perfectpanel.com/dwodik/qt8kpqprono9nwp6.png">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+
+<body>
+  <div class="public-page">
+
+    <nav class="public-navbar">
+      <a href="index.html" class="public-navbar__brand">
+        <img src="https://cdnfiles.perfectpanel.com/dwodik/qt8kpqprono9nwp6.png" alt="Boostoraa"
+          class="public-navbar__logo">
+        <span class="public-navbar__brand-name">Boostoraa</span>
+      </a>
+      <div class="public-navbar__links">
+        <a href="index.html">Sign in</a>
+        <a href="services.html" class="is-active">Services</a>
+        <a href="api.html">API</a>
+        <a href="index.html#faq">FAQ</a>
+        <a href="signup.html" class="public-navbar__cta">Sign up</a>
+      </div>
+    </nav>
+
+    <div class="public-page__body">
+
+      <!-- ===== HERO / HEADER ===== -->
+      <section class="services-hero">
+        <div class="services-hero__inner">
+          <div class="services-hero__eyebrow">Full Catalog</div>
+          <h1 class="services-hero__title">Services &amp; Pricing</h1>
+          <p class="services-hero__subtitle">Browse every service we offer, with live rates, order limits, and delivery
+            estimates — no account required to look around.</p>
+        </div>
+      </section>
+
+      <!-- ===== TOOLBAR ===== -->
+      <div class="services-toolbar">
+        <div class="services-toolbar__search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="7" />
+            <line x1="21" y1="21" x2="16.65" y2="16.65" />
+          </svg>
+          <input type="text" id="serviceSearch" placeholder="Search by service name or ID...">
+        </div>
+        <button class="services-toolbar__select" id="currencyToggle" type="button">
+          PKR Rs
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6 9 12 15 18 9" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- ===== PLATFORM FILTER CHIPS ===== -->
+      <div class="services-filters">
+        <button class="services-filter-chip is-active" data-filter="all" type="button">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="4" y1="6" x2="20" y2="6" />
+            <line x1="4" y1="12" x2="20" y2="12" />
+            <line x1="4" y1="18" x2="20" y2="18" />
+          </svg>
+          All
+        </button>
+        <button class="services-filter-chip" data-filter="facebook" type="button">
+          <svg viewBox="0 0 24 24" fill="#1877F2">
+            <path
+              d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.79-4.69 4.53-4.69 1.31 0 2.68.24 2.68.24v2.97h-1.51c-1.49 0-1.96.93-1.96 1.89v2.25h3.33l-.53 3.49h-2.8V24C19.61 23.1 24 18.1 24 12.07z" />
+          </svg>
+          Facebook
+        </button>
+        <button class="services-filter-chip" data-filter="instagram" type="button">
+          <svg viewBox="0 0 24 24">
+            <defs>
+              <linearGradient id="igGradSvc" x1="0%" y1="100%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#FFDC80" />
+                <stop offset="30%" stop-color="#FCAF45" />
+                <stop offset="55%" stop-color="#E1306C" />
+                <stop offset="80%" stop-color="#C13584" />
+                <stop offset="100%" stop-color="#833AB4" />
+              </linearGradient>
+            </defs>
+            <rect x="2" y="2" width="20" height="20" rx="6" fill="url(#igGradSvc)" />
+            <circle cx="12" cy="12" r="4.6" fill="none" stroke="#fff" stroke-width="1.6" />
+            <circle cx="17.4" cy="6.6" r="1.2" fill="#fff" />
+          </svg>
+          Instagram
+        </button>
+        <button class="services-filter-chip" data-filter="tiktok" type="button">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path
+              d="M16.6 5.8c-.9-1-1.5-2.3-1.5-3.8h-3.1v14.4a3.2 3.2 0 1 1-2.7-3.16v-3.16A6.3 6.3 0 1 0 15 16.3V9.4a7.5 7.5 0 0 0 4.4 1.4V7.7c-1.1 0-2.1-.4-2.8-1.1z"
+              fill="#000" />
+          </svg>
+          TikTok
+        </button>
+        <button class="services-filter-chip" data-filter="youtube" type="button">
+          <svg viewBox="0 0 24 24" fill="#FF0000">
+            <path
+              d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8z" />
+            <path d="M9.6 15.5V8.5l6.3 3.5z" fill="#fff" />
+          </svg>
+          YouTube
+        </button>
+      </div>
+
+      <!-- ===== SERVICE CATEGORIES ===== -->
+      <div class="services-content" id="servicesContent">
+
+        <div class="service-category" data-platform="facebook">
+          <div class="service-category__header">
+            <div class="service-category__icon"><svg viewBox="0 0 24 24" fill="#1877F2"><path d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.79-4.69 4.53-4.69 1.31 0 2.68.24 2.68.24v2.97h-1.51c-1.49 0-1.96.93-1.96 1.89v2.25h3.33l-.53 3.49h-2.8V24C19.61 23.1 24 18.1 24 12.07z"/></svg></div>
+            <div class="service-category__title">Facebook Page Followers</div>
+            <div class="service-category__count">2 services</div>
+          </div>
+          <div class="service-list">
+          <div class="service-list-head">
+            <div class="service-list-head__id">ID</div>
+            <div class="service-list-head__name">Service</div>
+            <div class="service-list-head__rate">Rate / 1000</div>
+            <div class="service-list-head__minmax">Min – Max</div>
+            <div class="service-list-head__time">Avg. Time</div>
+            <div class="service-list-head__action">Action</div>
+          </div>
+            <div class="service-list-row" data-id="43" data-name="Facebook Followers Hidden Data" data-rate="PKR 78.54"
+              data-min="10" data-max="1,000,000" data-time="~24 min" data-quality="Hidden Data, All Type Profile &amp; Page, Low Drop"
+              data-refill="No Refill" data-speed="Day 50K" data-start="Instant Start">
+              <div class="service-list-row__id">43</div>
+              <div>
+                <div class="service-list-row__name">Facebook Followers | Hidden Data | All Type Profile &amp; Page | Low Drop</div>
+                <div class="service-list-row__tags">
+                  <span class="service-tag">Hidden Data</span>
+                  <span class="service-tag service-tag--warn">No Refill</span>
+                  <span class="service-tag service-tag--good">Instant Start</span>
+                </div>
+              </div>
+              <div class="service-list-row__rate">PKR 78.54</div>
+              <div class="service-list-row__minmax">10 – 1M</div>
+              <div class="service-list-row__time">~24 min</div>
+              <div class="service-list-row__action"><button class="service-list-row__view-btn"
+                  type="button">View</button></div>
+            </div>
+            <div class="service-list-row" data-id="42" data-name="Facebook Followers Max 1M" data-rate="PKR 89.24"
+              data-min="10" data-max="1,000,000" data-time="—" data-quality="All Type Profile &amp; Page, Non Drop"
+              data-refill="No Refill" data-speed="Day 200K" data-start="Instant Start">
+              <div class="service-list-row__id">42</div>
+              <div>
+                <div class="service-list-row__name">Facebook Followers | Max 1M | All Type Profile &amp; Page | Non Drop</div>
+                <div class="service-list-row__tags">
+                  <span class="service-tag service-tag--good">Non Drop</span>
+                  <span class="service-tag service-tag--warn">No Refill</span>
+                  <span class="service-tag service-tag--good">Instant Start</span>
+                </div>
+              </div>
+              <div class="service-list-row__rate">PKR 89.24</div>
+              <div class="service-list-row__minmax">10 – 1M</div>
+              <div class="service-list-row__time">—</div>
+              <div class="service-list-row__action"><button class="service-list-row__view-btn"
+                  type="button">View</button></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="service-category" data-platform="facebook">
+          <div class="service-category__header">
+            <div class="service-category__icon"><svg viewBox="0 0 24 24" fill="#1877F2"><path d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.79-4.69 4.53-4.69 1.31 0 2.68.24 2.68.24v2.97h-1.51c-1.49 0-1.96.93-1.96 1.89v2.25h3.33l-.53 3.49h-2.8V24C19.61 23.1 24 18.1 24 12.07z"/></svg></div>
+            <div class="service-category__title">Facebook Video Views [ High Speed ]</div>
+            <span class="service-category__badge">New</span>
+            <div class="service-category__count">5 services</div>
+          </div>
+          <div class="service-list">
+          <div class="service-list-head">
+            <div class="service-list-head__id">ID</div>
+            <div class="service-list-head__name">Service</div>
+            <div class="service-list-head__rate">Rate / 1000</div>
+            <div class="service-list-head__minmax">Min – Max</div>
+            <div class="service-list-head__time">Avg. Time</div>
+            <div class="service-list-head__action">Action</div>
+          </div>
+            <div class="service-list-row" data-id="44" data-name="Facebook Views Video Reels" data-rate="PKR 12.36"
+              data-min="10" data-max="2,147,483,647" data-time="~28h 50m" data-quality="Max 100M, Non Drop, Cancel Enable"
+              data-refill="Lifetime Refill" data-speed="Day 500K" data-start="Instant Start">
+              <div class="service-list-row__id">44</div>
+              <div>
+                <div class="service-list-row__name">Facebook Views (Video/Reels) | Max 100M | Non Drop | Cancel Enable</div>
+                <div class="service-list-row__tags">
+                  <span class="service-tag service-tag--good">Lifetime Refill</span>
+                  <span class="service-tag">Cancel Enable</span>
+                  <span class="service-tag service-tag--good">Instant Start</span>
+                </div>
+              </div>
+              <div class="service-list-row__rate">PKR 12.36</div>
+              <div class="service-list-row__minmax">10 – 2.1B</div>
+              <div class="service-list-row__time">~28h 50m</div>
+              <div class="service-list-row__action"><button class="service-list-row__view-btn"
+                  type="button">View</button></div>
+            </div>
+            <div class="service-list-row" data-id="45" data-name="Facebook Views Video Reels" data-rate="PKR 16.71"
+              data-min="100" data-max="100,000,000" data-time="~6 min" data-quality="Max 100M, Non Drop, Cancel Enable"
+              data-refill="Lifetime Refill" data-speed="Day 1M" data-start="Instant Start">
+              <div class="service-list-row__id">45</div>
+              <div>
+                <div class="service-list-row__name">Facebook Views (Video/Reels) | Max 100M | Non Drop | Cancel Enable | Day 1M</div>
+                <div class="service-list-row__tags">
+                  <span class="service-tag service-tag--good">Lifetime Refill</span>
+                  <span class="service-tag">Cancel Enable</span>
+                  <span class="service-tag service-tag--good">Instant Start</span>
+                </div>
+              </div>
+              <div class="service-list-row__rate">PKR 16.71</div>
+              <div class="service-list-row__minmax">100 – 100M</div>
+              <div class="service-list-row__time">~6 min</div>
+              <div class="service-list-row__action"><button class="service-list-row__view-btn"
+                  type="button">View</button></div>
+            </div>
+            <div class="service-list-row" data-id="46" data-name="Facebook Views Video Reels" data-rate="PKR 12.25"
+              data-min="100" data-max="2,147,483,647" data-time="—" data-quality="Max 100M, Non Drop, Cancel Enable"
+              data-refill="Lifetime Refill" data-speed="Day 100K" data-start="Instant Start">
+              <div class="service-list-row__id">46</div>
+              <div>
+                <div class="service-list-row__name">Facebook Views (Video/Reels) | Max 100M | Non Drop | Cancel Enable | Day 100K</div>
+                <div class="service-list-row__tags">
+                  <span class="service-tag service-tag--good">Lifetime Refill</span>
+                  <span class="service-tag">Cancel Enable</span>
+                  <span class="service-tag service-tag--good">Instant Start</span>
+                </div>
+              </div>
+              <div class="service-list-row__rate">PKR 12.25</div>
+              <div class="service-list-row__minmax">100 – 2.1B</div>
+              <div class="service-list-row__time">—</div>
+              <div class="service-list-row__action"><button class="service-list-row__view-btn"
+                  type="button">View</button></div>
+            </div>
+            <div class="service-list-row" data-id="76" data-name="Facebook Views Video Reels" data-rate="PKR 10.44"
+              data-min="100" data-max="10,000,000" data-time="—" data-quality="Max 100M, Non Drop"
+              data-refill="Lifetime Refill" data-speed="Day 1M" data-start="Instant Start">
+              <div class="service-list-row__id">76</div>
+              <div>
+                <div class="service-list-row__name">Facebook Views (Video/Reels) | Max 100M | Non Drop | Day 1M</div>
+                <div class="service-list-row__tags">
+                  <span class="service-tag service-tag--good">Lifetime Refill</span>
+                  <span class="service-tag service-tag--good">Instant Start</span>
+                </div>
+              </div>
+              <div class="service-list-row__rate">PKR 10.44</div>
+              <div class="service-list-row__minmax">100 – 10M</div>
+              <div class="service-list-row__time">—</div>
+              <div class="service-list-row__action"><button class="service-list-row__view-btn"
+                  type="button">View</button></div>
+            </div>
+            <div class="service-list-row" data-id="77" data-name="Facebook Views Video Reels" data-rate="PKR 8.36"
+              data-min="500" data-max="2,147,483,647" data-time="—" data-quality="Max 100M, Non Drop, Cancel Enable"
+              data-refill="Lifetime Refill" data-speed="Day 50K" data-start="Instant Start">
+              <div class="service-list-row__id">77</div>
+              <div>
+                <div class="service-list-row__name">Facebook Views (Video/Reels) | Max 100M | Non Drop | Cancel Enable | Day 50K</div>
+                <div class="service-list-row__tags">
+                  <span class="service-tag service-tag--good">Lifetime Refill</span>
+                  <span class="service-tag">Cancel Enable</span>
+                  <span class="service-tag service-tag--good">Instant Start</span>
+                </div>
+              </div>
+              <div class="service-list-row__rate">PKR 8.36</div>
+              <div class="service-list-row__minmax">500 – 2.1B</div>
+              <div class="service-list-row__time">—</div>
+              <div class="service-list-row__action"><button class="service-list-row__view-btn"
+                  type="button">View</button></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="service-category" data-platform="facebook">
+          <div class="service-category__header">
+            <div class="service-category__icon"><svg viewBox="0 0 24 24" fill="#1877F2"><path d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.79-4.69 4.53-4.69 1.31 0 2.68.24 2.68.24v2.97h-1.51c-1.49 0-1.96.93-1.96 1.89v2.25h3.33l-.53 3.49h-2.8V24C19.61 23.1 24 18.1 24 12.07z"/></svg></div>
+            <div class="service-category__title">Facebook Post Reactions [ Cheapest in The Market ]</div>
+            <span class="service-category__badge">New</span>
+            <div class="service-category__count">7 services</div>
+          </div>
+          <div class="service-list">
+          <div class="service-list-head">
+            <div class="service-list-head__id">ID</div>
+            <div class="service-list-head__name">Service</div>
+            <div class="service-list-head__rate">Rate / 1000</div>
+            <div class="service-list-head__minmax">Min – Max</div>
+            <div class="service-list-head__time">Avg. Time</div>
+            <div class="service-list-head__action">Action</div>
+          </div>
+            <div class="service-list-row" data-id="47" data-name="Facebook Post Reactions Likes 👍" data-rate="PKR 65.08"
+              data-min="10" data-max="500,000" data-time="—" data-quality="HQ Accounts, Max 500K"
+              data-refill="No Refill" data-speed="Day 50K" data-start="Instant Start">
+              <div class="service-list-row__id">47</div>
+              <div>
+                <div class="service-list-row__name">Facebook Post Reactions [ Likes 👍 ] | HQ Accounts | Max 500K</div>
+                <div class="service-list-row__tags">
+                  <span class="service-tag service-tag--good">HQ Accounts</span>
+                  <span class="service-tag service-tag--warn">No Refill</span>
+                  <span class="service-tag service-tag--good">Instant Start</span>
+                </div>
+              </div>
+              <div class="service-list-row__rate">PKR 65.08</div>
+              <div class="service-list-row__minmax">10 – 500K</div>
+              <div class="service-list-row__time">—</div>
+              <div class="service-list-row__action"><button class="service-list-row__view-btn"
+                  type="button">View</button></div>
+            </div>
+            <div class="service-list-row" data-id="48" data-name="Facebook Post Reactions Love ❤️" data-rate="PKR 65.08"
+              data-min="10" data-max="500,000" data-time="—" data-quality="HQ Accounts, Max 500K"
+              data-refill="No Refill" data-speed="Day 50K" data-start="Instant Start">
+              <div class="service-list-row__id">48</div>
+              <div>
+                <div class="service-list-row__name">Facebook Post Reactions [ Love ❤️ ] | HQ Accounts | Max 500K</div>
+                <div class="service-list-row__tags">
+                  <span class="service-tag service-tag--good">HQ Accounts</span>
+                  <span class="service-tag service-tag--warn">No Refill</span>
+                  <span class="service-tag service-tag--good">Instant Start</span>
+                </div>
+              </div>
+              <div class="service-list-row__rate">PKR 65.08</div>
+              <div class="service-list-row__minmax">10 – 500K</div>
+              <div class="service-list-row__time">—</div>
+              <div class="service-list-row__action"><button class="service-list-row__view-btn"
+                  type="button">View</button></div>
+            </div>
+            <div class="service-list-row" data-id="49" data-name="Facebook Post Reactions Wow 😲" data-rate="PKR 65.08"
+              data-min="10" data-max="500,000" data-time="—" data-quality="HQ Accounts, Max 500K"
+              data-refill="No Refill" data-speed="Day 50K" data-start="Instant Start">
+              <div class="service-list-row__id">49</div>
+              <div>
+                <div class="service-list-row__name">Facebook Post Reactions [ Wow 😲 ] | HQ Accounts | Max 500K</div>
+                <div class="service-list-row__tags">
+                  <span class="service-tag service-tag--good">HQ Accounts</span>
+                  <span class="service-tag service-tag--warn">No Refill</span>
+                  <span class="service-tag service-tag--good">Instant Start</span>
+                </div>
+              </div>
+              <div class="service-list-row__rate">PKR 65.08</div>
+              <div class="service-list-row__minmax">10 – 500K</div>
+              <div class="service-list-row__time">—</div>
+              <div class="service-list-row__action"><button class="service-list-row__view-btn"
+                  type="button">View</button></div>
+            </div>
+            <div class="service-list-row" data-id="50" data-name="Facebook Post Reactions Care 🤗" data-rate="PKR 65.08"
+              data-min="10" data-max="500,000" data-time="—" data-quality="HQ Accounts, Max 500K"
+              data-refill="No Refill" data-speed="Day 50K" data-start="Instant Start">
+              <div class="service-list-row__id">50</div>
+              <div>
+                <div class="service-list-row__name">Facebook Post Reactions [ Care 🤗 ] | HQ Accounts | Max 500K</div>
+                <div class="service-list-row__tags">
+                  <span class="service-tag service-tag--good">HQ Accounts</span>
+                  <span class="service-tag service-tag--warn">No Refill</span>
+                  <span class="service-tag service-tag--good">Instant Start</span>
+                </div>
+              </div>
+              <div class="service-list-row__rate">PKR 65.08</div>
+              <div class="service-list-row__minmax">10 – 500K</div>
+              <div class="service-list-row__time">—</div>
+              <div class="service-list-row__action"><button class="service-list-row__view-btn"
+                  type="button">View</button></div>
+            </div>
+            <div class="service-list-row" data-id="51" data-name="Facebook Post Reactions Haha 😄" data-rate="PKR 65.08"
+              data-min="10" data-max="500,000" data-time="—" data-quality="HQ Accounts, Max 500K"
+              data-refill="No Refill" data-speed="Day 50K" data-start="Instant Start">
+              <div class="service-list-row__id">51</div>
+              <div>
+                <div class="service-list-row__name">Facebook Post Reactions [ Haha 😄 ] | HQ Accounts | Max 500K</div>
+                <div class="service-list-row__tags">
+                  <span class="service-tag service-tag--good">HQ Accounts</span>
+                  <span class="service-tag service-tag--warn">No Refill</span>
+                  <span class="service-tag service-tag--good">Instant Start</span>
+                </div>
+              </div>
+              <div class="service-list-row__rate">PKR 65.08</div>
+              <div class="service-list-row__minmax">10 – 500K</div>
+              <div class="service-list-row__time">—</div>
+              <div class="service-list-row__action"><button class="service-list-row__view-btn"
+                  type="button">View</button></div>
+            </div>
+            <div class="service-list-row" data-id="52" data-name="Facebook Post Reactions Sad 😥" data-rate="PKR 65.08"
+              data-min="10" data-max="500,000" data-time="—" data-quality="HQ Accounts, Max 500K"
+              data-refill="No Refill" data-speed="Day 50K" data-start="Instant Start">
+              <div class="service-list-row__id">52</div>
+              <div>
+                <div class="service-list-row__name">Facebook Post Reactions [ Sad 😥 ] | HQ Accounts | Max 500K</div>
+                <div class="service-list-row__tags">
+                  <span class="service-tag service-tag--good">HQ Accounts</span>
+                  <span class="service-tag service-tag--warn">No Refill</span>
+                  <span class="service-tag service-tag--good">Instant Start</span>
+                </div>
+              </div>
+              <div class="service-list-row__rate">PKR 65.08</div>
+              <div class="service-list-row__minmax">10 – 500K</div>
+              <div class="service-list-row__time">—</div>
+              <div class="service-list-row__action"><button class="service-list-row__view-btn"
+                  type="button">View</button></div>
+            </div>
+            <div class="service-list-row" data-id="53" data-name="Facebook Post Reactions Angry 😡" data-rate="PKR 65.08"
+              data-min="10" data-max="500,000" data-time="—" data-quality="HQ Accounts, Max 500K"
+              data-refill="No Refill" data-speed="Day 50K" data-start="Instant Start">
+              <div class="service-list-row__id">53</div>
+              <div>
+                <div class="service-list-row__name">Facebook Post Reactions [ Angry 😡 ] | HQ Accounts | Max 500K</div>
+                <div class="service-list-row__tags">
+                  <span class="service-tag service-tag--good">HQ Accounts</span>
+                  <span class="service-tag service-tag--warn">No Refill</span>
+                  <span class="service-tag service-tag--good">Instant Start</span>
+                </div>
+              </div>
+              <div class="service-list-row__rate">PKR 65.08</div>
+              <div class="service-list-row__minmax">10 – 500K</div>
+              <div class="service-list-row__time">—</div>
+              <div class="service-list-row__action"><button class="service-list-row__view-btn"
+                  type="button">View</button></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="service-category" data-platform="facebook">
+          <div class="service-category__header">
+            <div class="service-category__icon"><svg viewBox="0 0 24 24" fill="#1877F2"><path d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.79-4.69 4.53-4.69 1.31 0 2.68.24 2.68.24v2.97h-1.51c-1.49 0-1.96.93-1.96 1.89v2.25h3.33l-.53 3.49h-2.8V24C19.61 23.1 24 18.1 24 12.07z"/></svg></div>
+            <div class="service-category__title">Facebook Comments — Own Server</div>
+            <div class="service-category__count">3 services</div>
+          </div>
+          <div class="service-list">
+          <div class="service-list-head">
+            <div class="service-list-head__id">ID</div>
+            <div class="service-list-head__name">Service</div>
+            <div class="service-list-head__rate">Rate / 1000</div>
+            <div class="service-list-head__minmax">Min – Max</div>
+            <div class="service-list-head__time">Avg. Time</div>
+            <div class="service-list-head__action">Action</div>
+          </div>
+            <div class="service-list-row" data-id="54" data-name="Facebook Comments Custom" data-rate="PKR 75.42"
+              data-min="10" data-max="100,000,000" data-time="~6 min" data-quality="Custom comments, Non Drop"
+              data-refill="No Refill" data-speed="Own Server" data-start="Instant">
+              <div class="service-list-row__id">54</div>
+              <div>
+                <div class="service-list-row__name">Facebook Comments | Custom | Non Drop | Instant</div>
+                <div class="service-list-row__tags">
+                  <span class="service-tag service-tag--good">Non Drop</span>
+                  <span class="service-tag service-tag--warn">No Refill</span>
+                  <span class="service-tag service-tag--good">Instant</span>
+                </div>
+              </div>
+              <div class="service-list-row__rate">PKR 75.42</div>
+              <div class="service-list-row__minmax">10 – 100M</div>
+              <div class="service-list-row__time">~6 min</div>
+              <div class="service-list-row__action"><button class="service-list-row__view-btn"
+                  type="button">View</button></div>
+            </div>
+            <div class="service-list-row" data-id="55" data-name="Facebook Comments Hidden Random" data-rate="PKR 75.42"
+              data-min="10" data-max="100,000,000" data-time="—" data-quality="Hidden/Random comments, Non Drop"
+              data-refill="No Refill" data-speed="Own Server" data-start="Instant">
+              <div class="service-list-row__id">55</div>
+              <div>
+                <div class="service-list-row__name">Facebook Comments | Hidden/Random | Non Drop | Instant</div>
+                <div class="service-list-row__tags">
+                  <span class="service-tag service-tag--good">Non Drop</span>
+                  <span class="service-tag service-tag--warn">No Refill</span>
+                  <span class="service-tag service-tag--good">Instant</span>
+                </div>
+              </div>
+              <div class="service-list-row__rate">PKR 75.42</div>
+              <div class="service-list-row__minmax">10 – 100M</div>
+              <div class="service-list-row__time">—</div>
+              <div class="service-list-row__action"><button class="service-list-row__view-btn"
+                  type="button">View</button></div>
+            </div>
+            <div class="service-list-row" data-id="56" data-name="Facebook Comments Hidden Random Lifetime" data-rate="PKR 94.09"
+              data-min="10" data-max="100,000,000" data-time="—" data-quality="Hidden/Random comments, Non Drop"
+              data-refill="Lifetime Refill" data-speed="Own Server" data-start="Instant">
+              <div class="service-list-row__id">56</div>
+              <div>
+                <div class="service-list-row__name">Facebook Comments | Hidden/Random | Lifetime | Non Drop | Instant</div>
+                <div class="service-list-row__tags">
+                  <span class="service-tag service-tag--good">Non Drop</span>
+                  <span class="service-tag service-tag--good">Lifetime Refill</span>
+                  <span class="service-tag service-tag--good">Instant</span>
+                </div>
+              </div>
+              <div class="service-list-row__rate">PKR 94.09</div>
+              <div class="service-list-row__minmax">10 – 100M</div>
+              <div class="service-list-row__time">—</div>
+              <div class="service-list-row__action"><button class="service-list-row__view-btn"
+                  type="button">View</button></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="service-category" data-platform="tiktok">
+          <div class="service-category__header">
+            <div class="service-category__icon"><svg viewBox="0 0 24 24" fill="none"><path d="M16.6 5.8c-.9-1-1.5-2.3-1.5-3.8h-3.1v14.4a3.2 3.2 0 1 1-2.7-3.16v-3.16A6.3 6.3 0 1 0 15 16.3V9.4a7.5 7.5 0 0 0 4.4 1.4V7.7c-1.1 0-2.1-.4-2.8-1.1z" fill="#000"/></svg></div>
+            <div class="service-category__title">TikTok Followers [ Cheapest – Working ]</div>
+            <span class="service-category__badge">New</span>
+            <div class="service-category__count">4 services</div>
+          </div>
+          <div class="service-list">
+          <div class="service-list-head">
+            <div class="service-list-head__id">ID</div>
+            <div class="service-list-head__name">Service</div>
+            <div class="service-list-head__rate">Rate / 1000</div>
+            <div class="service-list-head__minmax">Min – Max</div>
+            <div class="service-list-head__time">Avg. Time</div>
+            <div class="service-list-head__action">Action</div>
+          </div>
+            <div class="service-list-row" data-id="58" data-name="TikTok Followers" data-rate="PKR 227.14"
+              data-min="10" data-max="1,000,000" data-time="~3 min" data-quality="Max 1M, 100% Real Accounts"
+              data-refill="7 Days Refill" data-speed="Day 100K" data-start="Instant Start">
+              <div class="service-list-row__id">58</div>
+              <div>
+                <div class="service-list-row__name">TikTok Followers | Max 1M | 100% Real Accounts | 7 Days</div>
+                <div class="service-list-row__tags">
+                  <span class="service-tag service-tag--good">100% Real</span>
+                  <span class="service-tag service-tag--good">7 Days Refill</span>
+                  <span class="service-tag service-tag--good">Instant Start</span>
+                </div>
+              </div>
+              <div class="service-list-row__rate">PKR 227.14</div>
+              <div class="service-list-row__minmax">10 – 1M</div>
+              <div class="service-list-row__time">~3 min</div>
+              <div class="service-list-row__action"><button class="service-list-row__view-btn"
+                  type="button">View</button></div>
+            </div>
+            <div class="service-list-row" data-id="59" data-name="TikTok Followers" data-rate="PKR 243.84"
+              data-min="10" data-max="1,000,000" data-time="~3 min" data-quality="Max 1M, 100% Real Accounts"
+              data-refill="15 Days Refill" data-speed="Day 100K" data-start="Instant Start">
+              <div class="service-list-row__id">59</div>
+              <div>
+                <div class="service-list-row__name">TikTok Followers | Max 1M | 100% Real Accounts | 15 Days</div>
+                <div class="service-list-row__tags">
+                  <span class="service-tag service-tag--good">100% Real</span>
+                  <span class="service-tag service-tag--good">15 Days Refill</span>
+                  <span class="service-tag service-tag--good">Instant Start</span>
+                </div>
+              </div>
+              <div class="service-list-row__rate">PKR 243.84</div>
+              <div class="service-list-row__minmax">10 – 1M</div>
+              <div class="service-list-row__time">~3 min</div>
+              <div class="service-list-row__action"><button class="service-list-row__view-btn"
+                  type="button">View</button></div>
+            </div>
+            <div class="service-list-row" data-id="60" data-name="TikTok Followers" data-rate="PKR 260.54"
+              data-min="10" data-max="1,000,000" data-time="~3 min" data-quality="Max 1M, 100% Real Accounts"
+              data-refill="20 Days Refill" data-speed="Day 100K" data-start="Instant Start">
+              <div class="service-list-row__id">60</div>
+              <div>
+                <div class="service-list-row__name">TikTok Followers | Max 1M | 100% Real Accounts | 20 Days</div>
+                <div class="service-list-row__tags">
+                  <span class="service-tag service-tag--good">100% Real</span>
+                  <span class="service-tag service-tag--good">20 Days Refill</span>
+                  <span class="service-tag service-tag--good">Instant Start</span>
+                </div>
+              </div>
+              <div class="service-list-row__rate">PKR 260.54</div>
+              <div class="service-list-row__minmax">10 – 1M</div>
+              <div class="service-list-row__time">~3 min</div>
+              <div class="service-list-row__action"><button class="service-list-row__view-btn"
+                  type="button">View</button></div>
+            </div>
+            <div class="service-list-row" data-id="61" data-name="TikTok Followers" data-rate="PKR 277.24"
+              data-min="10" data-max="1,000,000" data-time="~3 min" data-quality="Max 1M, 100% Real Accounts"
+              data-refill="30 Days Refill" data-speed="Day 100K" data-start="Instant Start">
+              <div class="service-list-row__id">61</div>
+              <div>
+                <div class="service-list-row__name">TikTok Followers | Max 1M | 100% Real Accounts | 30 Days</div>
+                <div class="service-list-row__tags">
+                  <span class="service-tag service-tag--good">100% Real</span>
+                  <span class="service-tag service-tag--good">30 Days Refill</span>
+                  <span class="service-tag service-tag--good">Instant Start</span>
+                </div>
+              </div>
+              <div class="service-list-row__rate">PKR 277.24</div>
+              <div class="service-list-row__minmax">10 – 1M</div>
+              <div class="service-list-row__time">~3 min</div>
+              <div class="service-list-row__action"><button class="service-list-row__view-btn"
+                  type="button">View</button></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="service-category" data-platform="instagram">
+          <div class="service-category__header">
+            <div class="service-category__icon"><svg viewBox="0 0 24 24"><defs><linearGradient id="igGradCat6" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#FFDC80"/><stop offset="30%" stop-color="#FCAF45"/><stop offset="55%" stop-color="#E1306C"/><stop offset="80%" stop-color="#C13584"/><stop offset="100%" stop-color="#833AB4"/></linearGradient></defs><rect x="2" y="2" width="20" height="20" rx="6" fill="url(#igGradCat6)"/><circle cx="12" cy="12" r="4.6" fill="none" stroke="#fff" stroke-width="1.6"/><circle cx="17.4" cy="6.6" r="1.2" fill="#fff"/></svg></div>
+            <div class="service-category__title">Instagram Likes [ LQ Accounts ]</div>
+            <div class="service-category__count">6 services</div>
+          </div>
+          <div class="service-list">
+          <div class="service-list-head">
+            <div class="service-list-head__id">ID</div>
+            <div class="service-list-head__name">Service</div>
+            <div class="service-list-head__rate">Rate / 1000</div>
+            <div class="service-list-head__minmax">Min – Max</div>
+            <div class="service-list-head__time">Avg. Time</div>
+            <div class="service-list-head__action">Action</div>
+          </div>
+            <div class="service-list-row" data-id="62" data-name="Instagram Likes" data-rate="PKR 20.34"
+              data-min="10" data-max="1,000,000" data-time="~5 min" data-quality="Max 1M, LQ Accounts, Cancel Enable, Low Drop"
+              data-refill="No Refill" data-speed="Day 100K" data-start="Instant Start">
+              <div class="service-list-row__id">62</div>
+              <div>
+                <div class="service-list-row__name">Instagram Likes | Max 1M | LQ Accounts | Cancel Enable | Low Drop | No Refill</div>
+                <div class="service-list-row__tags">
+                  <span class="service-tag service-tag--warn">No Refill</span>
+                  <span class="service-tag service-tag--good">Instant Start</span>
+                </div>
+              </div>
+              <div class="service-list-row__rate">PKR 20.34</div>
+              <div class="service-list-row__minmax">10 – 1M</div>
+              <div class="service-list-row__time">~5 min</div>
+              <div class="service-list-row__action"><button class="service-list-row__view-btn"
+                  type="button">View</button></div>
+            </div>
+            <div class="service-list-row" data-id="63" data-name="Instagram Likes" data-rate="PKR 20.80"
+              data-min="10" data-max="1,000,000" data-time="~5 min" data-quality="Max 1M, LQ Accounts, Cancel Enable, Low Drop"
+              data-refill="30 Days Refill" data-speed="Day 100K" data-start="Instant Start">
+              <div class="service-list-row__id">63</div>
+              <div>
+                <div class="service-list-row__name">Instagram Likes | Max 1M | LQ Accounts | Cancel Enable | Low Drop | 30 Days</div>
+                <div class="service-list-row__tags">
+                  <span class="service-tag service-tag--good">30 Days Refill</span>
+                  <span class="service-tag service-tag--good">Instant Start</span>
+                </div>
+              </div>
+              <div class="service-list-row__rate">PKR 20.80</div>
+              <div class="service-list-row__minmax">10 – 1M</div>
+              <div class="service-list-row__time">~5 min</div>
+              <div class="service-list-row__action"><button class="service-list-row__view-btn"
+                  type="button">View</button></div>
+            </div>
+            <div class="service-list-row" data-id="64" data-name="Instagram Likes" data-rate="PKR 21.22"
+              data-min="10" data-max="1,000,000" data-time="~5 min" data-quality="Max 1M, LQ Accounts, Cancel Enable, Low Drop"
+              data-refill="60 Days Refill" data-speed="Day 100K" data-start="Instant Start">
+              <div class="service-list-row__id">64</div>
+              <div>
+                <div class="service-list-row__name">Instagram Likes | Max 1M | LQ Accounts | Cancel Enable | Low Drop | 60 Days</div>
+                <div class="service-list-row__tags">
+                  <span class="service-tag service-tag--good">60 Days Refill</span>
+                  <span class="service-tag service-tag--good">Instant Start</span>
+                </div>
+              </div>
+              <div class="service-list-row__rate">PKR 21.22</div>
+              <div class="service-list-row__minmax">10 – 1M</div>
+              <div class="service-list-row__time">~5 min</div>
+              <div class="service-list-row__action"><button class="service-list-row__view-btn"
+                  type="button">View</button></div>
+            </div>
+            <div class="service-list-row" data-id="65" data-name="Instagram Likes" data-rate="PKR 21.63"
+              data-min="10" data-max="1,000,000" data-time="~5 min" data-quality="Max 1M, LQ Accounts, Cancel Enable, Low Drop"
+              data-refill="90 Days Refill" data-speed="Day 100K" data-start="Instant Start">
+              <div class="service-list-row__id">65</div>
+              <div>
+                <div class="service-list-row__name">Instagram Likes | Max 1M | LQ Accounts | Cancel Enable | Low Drop | 90 Days</div>
+                <div class="service-list-row__tags">
+                  <span class="service-tag service-tag--good">90 Days Refill</span>
+                  <span class="service-tag service-tag--good">Instant Start</span>
+                </div>
+              </div>
+              <div class="service-list-row__rate">PKR 21.63</div>
+              <div class="service-list-row__minmax">10 – 1M</div>
+              <div class="service-list-row__time">~5 min</div>
+              <div class="service-list-row__action"><button class="service-list-row__view-btn"
+                  type="button">View</button></div>
+            </div>
+            <div class="service-list-row" data-id="66" data-name="Instagram Likes" data-rate="PKR 22.05"
+              data-min="10" data-max="1,000,000" data-time="~5 min" data-quality="Max 1M, LQ Accounts, Cancel Enable, Low Drop"
+              data-refill="365 Days Refill" data-speed="Day 100K" data-start="Instant Start">
+              <div class="service-list-row__id">66</div>
+              <div>
+                <div class="service-list-row__name">Instagram Likes | Max 1M | LQ Accounts | Cancel Enable | Low Drop | 365 Days</div>
+                <div class="service-list-row__tags">
+                  <span class="service-tag service-tag--good">365 Days Refill</span>
+                  <span class="service-tag service-tag--good">Instant Start</span>
+                </div>
+              </div>
+              <div class="service-list-row__rate">PKR 22.05</div>
+              <div class="service-list-row__minmax">10 – 1M</div>
+              <div class="service-list-row__time">~5 min</div>
+              <div class="service-list-row__action"><button class="service-list-row__view-btn"
+                  type="button">View</button></div>
+            </div>
+            <div class="service-list-row" data-id="67" data-name="Instagram Likes" data-rate="PKR 22.47"
+              data-min="10" data-max="1,000,000" data-time="~5 min" data-quality="Max 1M, LQ Accounts, Cancel Enable, Low Drop"
+              data-refill="Lifetime Refill" data-speed="Day 100K" data-start="Instant Start">
+              <div class="service-list-row__id">67</div>
+              <div>
+                <div class="service-list-row__name">Instagram Likes | Max 1M | LQ Accounts | Cancel Enable | Low Drop | Lifetime</div>
+                <div class="service-list-row__tags">
+                  <span class="service-tag service-tag--good">Lifetime Refill</span>
+                  <span class="service-tag service-tag--good">Instant Start</span>
+                </div>
+              </div>
+              <div class="service-list-row__rate">PKR 22.47</div>
+              <div class="service-list-row__minmax">10 – 1M</div>
+              <div class="service-list-row__time">~5 min</div>
+              <div class="service-list-row__action"><button class="service-list-row__view-btn"
+                  type="button">View</button></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="service-category" data-platform="youtube">
+          <div class="service-category__header">
+            <div class="service-category__icon"><svg viewBox="0 0 24 24" fill="#FF0000"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8z"/><path d="M9.6 15.5V8.5l6.3 3.5z" fill="#fff"/></svg></div>
+            <div class="service-category__title">YouTube Subscribers [ Non Drop ]</div>
+            <span class="service-category__badge">New</span>
+            <div class="service-category__count">1 service</div>
+          </div>
+          <div class="service-list">
+          <div class="service-list-head">
+            <div class="service-list-head__id">ID</div>
+            <div class="service-list-head__name">Service</div>
+            <div class="service-list-head__rate">Rate / 1000</div>
+            <div class="service-list-head__minmax">Min – Max</div>
+            <div class="service-list-head__time">Avg. Time</div>
+            <div class="service-list-head__action">Action</div>
+          </div>
+            <div class="service-list-row" data-id="68" data-name="YouTube Subscribers" data-rate="PKR 8560.49"
+              data-min="100" data-max="5,000" data-time="—" data-quality="3k–5k per day delivery, No Drop"
+              data-refill="30 Day Refill" data-speed="3k–5k/Day" data-start="Provider Queue">
+              <div class="service-list-row__id">68</div>
+              <div>
+                <div class="service-list-row__name">YouTube Subscribers | No Drop | 30 Day Refill | 3k–5k/Day</div>
+                <div class="service-list-row__tags">
+                  <span class="service-tag service-tag--good">No Drop</span>
+                  <span class="service-tag service-tag--good">30 Day Refill</span>
+                </div>
+              </div>
+              <div class="service-list-row__rate">PKR 8560.49</div>
+              <div class="service-list-row__minmax">100 – 5K</div>
+              <div class="service-list-row__time">—</div>
+              <div class="service-list-row__action"><button class="service-list-row__view-btn"
+                  type="button">View</button></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="service-category" data-platform="youtube">
+          <div class="service-category__header">
+            <div class="service-category__icon"><svg viewBox="0 0 24 24" fill="#FF0000"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8z"/><path d="M9.6 15.5V8.5l6.3 3.5z" fill="#fff"/></svg></div>
+            <div class="service-category__title">YouTube Views — 4000H Watchtime</div>
+            <div class="service-category__count">4 services</div>
+          </div>
+          <div class="service-list">
+          <div class="service-list-head">
+            <div class="service-list-head__id">ID</div>
+            <div class="service-list-head__name">Service</div>
+            <div class="service-list-head__rate">Rate / 1000</div>
+            <div class="service-list-head__minmax">Min – Max</div>
+            <div class="service-list-head__time">Avg. Time</div>
+            <div class="service-list-head__action">Action</div>
+          </div>
+            <div class="service-list-row" data-id="69" data-name="YouTube Watchtime" data-rate="PKR 4199.04"
+              data-min="100" data-max="32,000" data-time="—" data-quality="15+ Minutes Video, 1000 Views = 120 Hours"
+              data-refill="30 Day Refill" data-speed="Real Views" data-start="Standard Queue">
+              <div class="service-list-row__id">69</div>
+              <div>
+                <div class="service-list-row__name">YouTube Watchtime | 15+ Minutes Video | Real Views | 1000 Views = 120 Hours</div>
+                <div class="service-list-row__tags">
+                  <span class="service-tag service-tag--good">Real Views</span>
+                  <span class="service-tag service-tag--good">30 Day Refill</span>
+                </div>
+              </div>
+              <div class="service-list-row__rate">PKR 4199.04</div>
+              <div class="service-list-row__minmax">100 – 32K</div>
+              <div class="service-list-row__time">—</div>
+              <div class="service-list-row__action"><button class="service-list-row__view-btn"
+                  type="button">View</button></div>
+            </div>
+            <div class="service-list-row" data-id="70" data-name="YouTube Watchtime" data-rate="PKR 5297.40"
+              data-min="100" data-max="16,000" data-time="—" data-quality="30+ Minutes Video, 1000 Views = 250 Hours"
+              data-refill="30 Day Refill" data-speed="Real Views" data-start="Standard Queue">
+              <div class="service-list-row__id">70</div>
+              <div>
+                <div class="service-list-row__name">YouTube Watchtime | 30+ Minutes Video | Real Views | 1000 Views = 250 Hours</div>
+                <div class="service-list-row__tags">
+                  <span class="service-tag service-tag--good">Real Views</span>
+                  <span class="service-tag service-tag--good">30 Day Refill</span>
+                </div>
+              </div>
+              <div class="service-list-row__rate">PKR 5297.40</div>
+              <div class="service-list-row__minmax">100 – 16K</div>
+              <div class="service-list-row__time">—</div>
+              <div class="service-list-row__action"><button class="service-list-row__view-btn"
+                  type="button">View</button></div>
+            </div>
+            <div class="service-list-row" data-id="71" data-name="YouTube Watchtime" data-rate="PKR 7873.19"
+              data-min="100" data-max="4,000" data-time="—" data-quality="40–45+ Minutes Video, 1000 Views = 1000 Hours"
+              data-refill="30 Day Refill" data-speed="Real Views" data-start="Standard Queue">
+              <div class="service-list-row__id">71</div>
+              <div>
+                <div class="service-list-row__name">YouTube Watchtime | 40–45+ Minutes Video | Real Views | 1000 Views = 1000 Hours</div>
+                <div class="service-list-row__tags">
+                  <span class="service-tag service-tag--good">Real Views</span>
+                  <span class="service-tag service-tag--good">30 Day Refill</span>
+                </div>
+              </div>
+              <div class="service-list-row__rate">PKR 7873.19</div>
+              <div class="service-list-row__minmax">100 – 4K</div>
+              <div class="service-list-row__time">—</div>
+              <div class="service-list-row__action"><button class="service-list-row__view-btn"
+                  type="button">View</button></div>
+            </div>
+            <div class="service-list-row" data-id="72" data-name="YouTube Watchtime" data-rate="PKR 7873.19"
+              data-min="100" data-max="4,000" data-time="—" data-quality="60+ Minutes Video, 1000 Views = 1000 Hours"
+              data-refill="30 Day Refill" data-speed="Real Views" data-start="Standard Queue">
+              <div class="service-list-row__id">72</div>
+              <div>
+                <div class="service-list-row__name">YouTube Watchtime | 60+ Minutes Video | Real Views | 1000 Views = 1000 Hours</div>
+                <div class="service-list-row__tags">
+                  <span class="service-tag service-tag--good">Real Views</span>
+                  <span class="service-tag service-tag--good">30 Day Refill</span>
+                </div>
+              </div>
+              <div class="service-list-row__rate">PKR 7873.19</div>
+              <div class="service-list-row__minmax">100 – 4K</div>
+              <div class="service-list-row__time">—</div>
+              <div class="service-list-row__action"><button class="service-list-row__view-btn"
+                  type="button">View</button></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="service-category" data-platform="youtube">
+          <div class="service-category__header">
+            <div class="service-category__icon"><svg viewBox="0 0 24 24" fill="#FF0000"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8z"/><path d="M9.6 15.5V8.5l6.3 3.5z" fill="#fff"/></svg></div>
+            <div class="service-category__title">New Things</div>
+            <span class="service-category__badge">New</span>
+            <div class="service-category__count">3 services</div>
+          </div>
+          <div class="service-list">
+          <div class="service-list-head">
+            <div class="service-list-head__id">ID</div>
+            <div class="service-list-head__name">Service</div>
+            <div class="service-list-head__rate">Rate / 1000</div>
+            <div class="service-list-head__minmax">Min – Max</div>
+            <div class="service-list-head__time">Avg. Time</div>
+            <div class="service-list-head__action">Action</div>
+          </div>
+            <div class="service-list-row" data-id="73" data-name="YouTube Likes" data-rate="PKR 267.22"
+              data-min="10" data-max="1,000" data-time="—" data-quality="Max 1K, 100% Real Accounts, Non Drop"
+              data-refill="30 Day Refill" data-speed="Hour 1K" data-start="Instant Start">
+              <div class="service-list-row__id">73</div>
+              <div>
+                <div class="service-list-row__name">YouTube Likes | Video/Shorts/LiveStream | Max 1K | 100% Real Accounts | Non Drop</div>
+                <div class="service-list-row__tags">
+                  <span class="service-tag service-tag--good">100% Real</span>
+                  <span class="service-tag service-tag--good">Non Drop</span>
+                  <span class="service-tag service-tag--good">30 Day Refill</span>
+                </div>
+              </div>
+              <div class="service-list-row__rate">PKR 267.22</div>
+              <div class="service-list-row__minmax">10 – 1K</div>
+              <div class="service-list-row__time">—</div>
+              <div class="service-list-row__action"><button class="service-list-row__view-btn"
+                  type="button">View</button></div>
+            </div>
+            <div class="service-list-row" data-id="74" data-name="YouTube Likes" data-rate="PKR 668.04"
+              data-min="10" data-max="5,000" data-time="—" data-quality="Max 5K, 100% Real Accounts, Non Drop"
+              data-refill="30 Day Refill" data-speed="Day 5K" data-start="Instant Start">
+              <div class="service-list-row__id">74</div>
+              <div>
+                <div class="service-list-row__name">YouTube Likes | Video/Shorts/LiveStream | Max 5K | 100% Real Accounts | Non Drop</div>
+                <div class="service-list-row__tags">
+                  <span class="service-tag service-tag--good">100% Real</span>
+                  <span class="service-tag service-tag--good">Non Drop</span>
+                  <span class="service-tag service-tag--good">30 Day Refill</span>
+                </div>
+              </div>
+              <div class="service-list-row__rate">PKR 668.04</div>
+              <div class="service-list-row__minmax">10 – 5K</div>
+              <div class="service-list-row__time">—</div>
+              <div class="service-list-row__action"><button class="service-list-row__view-btn"
+                  type="button">View</button></div>
+            </div>
+            <div class="service-list-row" data-id="75" data-name="YouTube Likes" data-rate="PKR 575.64"
+              data-min="10" data-max="5,000" data-time="—" data-quality="Max 1K, Almost No Drop"
+              data-refill="No Refill" data-speed="1K/Hour" data-start="Instant Start">
+              <div class="service-list-row__id">75</div>
+              <div>
+                <div class="service-list-row__name">YouTube Likes | Max 1K | Almost No Drop</div>
+                <div class="service-list-row__tags">
+                  <span class="service-tag">Almost No Drop</span>
+                  <span class="service-tag service-tag--warn">No Refill</span>
+                  <span class="service-tag service-tag--good">Instant Start</span>
+                </div>
+              </div>
+              <div class="service-list-row__rate">PKR 575.64</div>
+              <div class="service-list-row__minmax">10 – 5K</div>
+              <div class="service-list-row__time">—</div>
+              <div class="service-list-row__action"><button class="service-list-row__view-btn"
+                  type="button">View</button></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="service-category" data-platform="facebook">
+          <div class="service-category__header">
+            <div class="service-category__icon"><svg viewBox="0 0 24 24" fill="#1877F2"><path d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.79-4.69 4.53-4.69 1.31 0 2.68.24 2.68.24v2.97h-1.51c-1.49 0-1.96.93-1.96 1.89v2.25h3.33l-.53 3.49h-2.8V24C19.61 23.1 24 18.1 24 12.07z"/></svg></div>
+            <div class="service-category__title">Facebook Story Reactions — Own Server</div>
+            <div class="service-category__count">11 services</div>
+          </div>
+          <div class="service-list">
+          <div class="service-list-head">
+            <div class="service-list-head__id">ID</div>
+            <div class="service-list-head__name">Service</div>
+            <div class="service-list-head__rate">Rate / 1000</div>
+            <div class="service-list-head__minmax">Min – Max</div>
+            <div class="service-list-head__time">Avg. Time</div>
+            <div class="service-list-head__action">Action</div>
+          </div>
+            <div class="service-list-row" data-id="78" data-name="Facebook Story Reaction 👍" data-rate="PKR 11.68"
+              data-min="100" data-max="100,000,000" data-time="—" data-quality="Own Server delivery, Non Drop"
+              data-refill="Standard" data-speed="Own Server" data-start="Instant Start">
+              <div class="service-list-row__id">78</div>
+              <div>
+                <div class="service-list-row__name">Facebook Story Reaction | 👍 | Non Drop</div>
+                <div class="service-list-row__tags">
+                  <span class="service-tag service-tag--good">Non Drop</span>
+                  <span class="service-tag service-tag--good">Instant Start</span>
+                </div>
+              </div>
+              <div class="service-list-row__rate">PKR 11.68</div>
+              <div class="service-list-row__minmax">100 – 100M</div>
+              <div class="service-list-row__time">—</div>
+              <div class="service-list-row__action"><button class="service-list-row__view-btn"
+                  type="button">View</button></div>
+            </div>
+            <div class="service-list-row" data-id="79" data-name="Facebook Story Reaction ❤️" data-rate="PKR 11.68"
+              data-min="100" data-max="100,000,000" data-time="—" data-quality="Own Server delivery, Non Drop"
+              data-refill="Standard" data-speed="Own Server" data-start="Instant Start">
+              <div class="service-list-row__id">79</div>
+              <div>
+                <div class="service-list-row__name">Facebook Story Reaction | ❤️ | Non Drop</div>
+                <div class="service-list-row__tags">
+                  <span class="service-tag service-tag--good">Non Drop</span>
+                  <span class="service-tag service-tag--good">Instant Start</span>
+                </div>
+              </div>
+              <div class="service-list-row__rate">PKR 11.68</div>
+              <div class="service-list-row__minmax">100 – 100M</div>
+              <div class="service-list-row__time">—</div>
+              <div class="service-list-row__action"><button class="service-list-row__view-btn"
+                  type="button">View</button></div>
+            </div>
+            <div class="service-list-row" data-id="80" data-name="Facebook Story Reaction 🤗" data-rate="PKR 11.68"
+              data-min="100" data-max="100,000,000" data-time="—" data-quality="Own Server delivery, Non Drop"
+              data-refill="Standard" data-speed="Own Server" data-start="Instant Start">
+              <div class="service-list-row__id">80</div>
+              <div>
+                <div class="service-list-row__name">Facebook Story Reaction | 🤗 | Non Drop</div>
+                <div class="service-list-row__tags">
+                  <span class="service-tag service-tag--good">Non Drop</span>
+                  <span class="service-tag service-tag--good">Instant Start</span>
+                </div>
+              </div>
+              <div class="service-list-row__rate">PKR 11.68</div>
+              <div class="service-list-row__minmax">100 – 100M</div>
+              <div class="service-list-row__time">—</div>
+              <div class="service-list-row__action"><button class="service-list-row__view-btn"
+                  type="button">View</button></div>
+            </div>
+            <div class="service-list-row" data-id="81" data-name="Facebook Story Reaction 😲" data-rate="PKR 11.68"
+              data-min="100" data-max="100,000,000" data-time="—" data-quality="Own Server delivery, Non Drop"
+              data-refill="Standard" data-speed="Own Server" data-start="Instant Start">
+              <div class="service-list-row__id">81</div>
+              <div>
+                <div class="service-list-row__name">Facebook Story Reaction | 😲 | Non Drop</div>
+                <div class="service-list-row__tags">
+                  <span class="service-tag service-tag--good">Non Drop</span>
+                  <span class="service-tag service-tag--good">Instant Start</span>
+                </div>
+              </div>
+              <div class="service-list-row__rate">PKR 11.68</div>
+              <div class="service-list-row__minmax">100 – 100M</div>
+              <div class="service-list-row__time">—</div>
+              <div class="service-list-row__action"><button class="service-list-row__view-btn"
+                  type="button">View</button></div>
+            </div>
+            <div class="service-list-row" data-id="82" data-name="Facebook Story Reaction 😂" data-rate="PKR 11.68"
+              data-min="100" data-max="100,000,000" data-time="—" data-quality="Own Server delivery, Non Drop"
+              data-refill="Standard" data-speed="Own Server" data-start="Instant Start">
+              <div class="service-list-row__id">82</div>
+              <div>
+                <div class="service-list-row__name">Facebook Story Reaction | 😂 | Non Drop</div>
+                <div class="service-list-row__tags">
+                  <span class="service-tag service-tag--good">Non Drop</span>
+                  <span class="service-tag service-tag--good">Instant Start</span>
+                </div>
+              </div>
+              <div class="service-list-row__rate">PKR 11.68</div>
+              <div class="service-list-row__minmax">100 – 100M</div>
+              <div class="service-list-row__time">—</div>
+              <div class="service-list-row__action"><button class="service-list-row__view-btn"
+                  type="button">View</button></div>
+            </div>
+            <div class="service-list-row" data-id="83" data-name="Facebook Story Reaction 😢" data-rate="PKR 11.68"
+              data-min="100" data-max="100,000,000" data-time="—" data-quality="Own Server delivery, Non Drop"
+              data-refill="Standard" data-speed="Own Server" data-start="Instant Start">
+              <div class="service-list-row__id">83</div>
+              <div>
+                <div class="service-list-row__name">Facebook Story Reaction | 😢 | Non Drop</div>
+                <div class="service-list-row__tags">
+                  <span class="service-tag service-tag--good">Non Drop</span>
+                  <span class="service-tag service-tag--good">Instant Start</span>
+                </div>
+              </div>
+              <div class="service-list-row__rate">PKR 11.68</div>
+              <div class="service-list-row__minmax">100 – 100M</div>
+              <div class="service-list-row__time">—</div>
+              <div class="service-list-row__action"><button class="service-list-row__view-btn"
+                  type="button">View</button></div>
+            </div>
+            <div class="service-list-row" data-id="84" data-name="Facebook Story Reaction 😡" data-rate="PKR 11.68"
+              data-min="100" data-max="100,000,000" data-time="—" data-quality="Own Server delivery, Non Drop"
+              data-refill="Standard" data-speed="Own Server" data-start="Instant Start">
+              <div class="service-list-row__id">84</div>
+              <div>
+                <div class="service-list-row__name">Facebook Story Reaction | 😡 | Non Drop</div>
+                <div class="service-list-row__tags">
+                  <span class="service-tag service-tag--good">Non Drop</span>
+                  <span class="service-tag service-tag--good">Instant Start</span>
+                </div>
+              </div>
+              <div class="service-list-row__rate">PKR 11.68</div>
+              <div class="service-list-row__minmax">100 – 100M</div>
+              <div class="service-list-row__time">—</div>
+              <div class="service-list-row__action"><button class="service-list-row__view-btn"
+                  type="button">View</button></div>
+            </div>
+            <div class="service-list-row" data-id="85" data-name="Facebook Story Reaction 👍❤️" data-rate="PKR 11.68"
+              data-min="100" data-max="100,000,000" data-time="—" data-quality="Own Server delivery, Non Drop"
+              data-refill="Standard" data-speed="Own Server" data-start="Instant Start">
+              <div class="service-list-row__id">85</div>
+              <div>
+                <div class="service-list-row__name">Facebook Story Reaction | 👍❤️ | Non Drop</div>
+                <div class="service-list-row__tags">
+                  <span class="service-tag service-tag--good">Non Drop</span>
+                  <span class="service-tag service-tag--good">Instant Start</span>
+                </div>
+              </div>
+              <div class="service-list-row__rate">PKR 11.68</div>
+              <div class="service-list-row__minmax">100 – 100M</div>
+              <div class="service-list-row__time">—</div>
+              <div class="service-list-row__action"><button class="service-list-row__view-btn"
+                  type="button">View</button></div>
+            </div>
+            <div class="service-list-row" data-id="86" data-name="Facebook Story Reaction 👍❤️😝" data-rate="PKR 11.68"
+              data-min="100" data-max="100,000,000" data-time="—" data-quality="Own Server delivery, Non Drop"
+              data-refill="Standard" data-speed="Own Server" data-start="Instant Start">
+              <div class="service-list-row__id">86</div>
+              <div>
+                <div class="service-list-row__name">Facebook Story Reaction | 👍❤️😝 | Non Drop</div>
+                <div class="service-list-row__tags">
+                  <span class="service-tag service-tag--good">Non Drop</span>
+                  <span class="service-tag service-tag--good">Instant Start</span>
+                </div>
+              </div>
+              <div class="service-list-row__rate">PKR 11.68</div>
+              <div class="service-list-row__minmax">100 – 100M</div>
+              <div class="service-list-row__time">—</div>
+              <div class="service-list-row__action"><button class="service-list-row__view-btn"
+                  type="button">View</button></div>
+            </div>
+            <div class="service-list-row" data-id="87" data-name="Facebook Story Reaction 👍❤️😝🤗😲" data-rate="PKR 11.68"
+              data-min="100" data-max="100,000,000" data-time="—" data-quality="Own Server delivery, Non Drop"
+              data-refill="Standard" data-speed="Own Server" data-start="Instant Start">
+              <div class="service-list-row__id">87</div>
+              <div>
+                <div class="service-list-row__name">Facebook Story Reaction | 👍❤️😝🤗😲 | Non Drop</div>
+                <div class="service-list-row__tags">
+                  <span class="service-tag service-tag--good">Non Drop</span>
+                  <span class="service-tag service-tag--good">Instant Start</span>
+                </div>
+              </div>
+              <div class="service-list-row__rate">PKR 11.68</div>
+              <div class="service-list-row__minmax">100 – 100M</div>
+              <div class="service-list-row__time">—</div>
+              <div class="service-list-row__action"><button class="service-list-row__view-btn"
+                  type="button">View</button></div>
+            </div>
+            <div class="service-list-row" data-id="88" data-name="Facebook Story Reaction 👍❤️😝🤗😲😡" data-rate="PKR 11.68"
+              data-min="100" data-max="100,000,000" data-time="—" data-quality="Own Server delivery, Non Drop"
+              data-refill="Standard" data-speed="Own Server" data-start="Instant Start">
+              <div class="service-list-row__id">88</div>
+              <div>
+                <div class="service-list-row__name">Facebook Story Reaction | 👍❤️😝🤗😲😡 | Non Drop</div>
+                <div class="service-list-row__tags">
+                  <span class="service-tag service-tag--good">Non Drop</span>
+                  <span class="service-tag service-tag--good">Instant Start</span>
+                </div>
+              </div>
+              <div class="service-list-row__rate">PKR 11.68</div>
+              <div class="service-list-row__minmax">100 – 100M</div>
+              <div class="service-list-row__time">—</div>
+              <div class="service-list-row__action"><button class="service-list-row__view-btn"
+                  type="button">View</button></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <footer class="public-footer">
+      <div class="public-footer__inner">
+        <span>© 2026 Boostoraa. All Rights Reserved.</span>
+        <a href="terms.html">Terms</a>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- ===== SERVICE DETAIL MODAL ===== -->
+  <div class="modal-overlay" id="serviceModal" onclick="closeServiceModal(event)">
+    <div class="modal">
+      <div class="modal__header">
+        <span class="modal__title" id="serviceModalTitle">Service Details</span>
+        <button class="modal__close" onclick="closeServiceModal(event)">✕</button>
+      </div>
+      <div class="modal__body">
+        <div class="service-modal-meta">
+          <div class="service-modal-meta__item">
+            <div class="service-modal-meta__label">Rate / 1000</div>
+            <div class="service-modal-meta__value" id="modalRate">—</div>
+          </div>
+          <div class="service-modal-meta__item">
+            <div class="service-modal-meta__label">Min – Max</div>
+            <div class="service-modal-meta__value" id="modalMinMax">—</div>
+          </div>
+          <div class="service-modal-meta__item">
+            <div class="service-modal-meta__label">Avg. Time</div>
+            <div class="service-modal-meta__value" id="modalTime">—</div>
+          </div>
+          <div class="service-modal-meta__item">
+            <div class="service-modal-meta__label">Refill</div>
+            <div class="service-modal-meta__value" id="modalRefill">—</div>
+          </div>
+        </div>
+        <div class="description-box" id="modalDescription"></div>
+      </div>
+      <div class="modal__footer">
+        <a href="signup.html" class="btn btn-primary" style="display:flex;">Sign Up to Order</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile bottom navigation -->
+  <nav class="public-bottom-nav">
+    <div class="public-bottom-nav__inner">
+      <a href="index.html" class="public-bottom-nav__item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 9.5 12 3l9 6.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z" />
+        </svg>
+        Sign in
+      </a>
+      <a href="services.html" class="public-bottom-nav__item is-active">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="3" y="3" width="7" height="7" rx="1" />
+          <rect x="14" y="3" width="7" height="7" rx="1" />
+          <rect x="3" y="14" width="7" height="7" rx="1" />
+          <rect x="14" y="14" width="7" height="7" rx="1" />
+        </svg>
+        Services
+      </a>
+      <a href="index.html#faq" class="public-bottom-nav__item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="9" />
+          <path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.7.35-1 .85-1 1.7" />
+          <line x1="12" y1="17" x2="12" y2="17.01" />
+        </svg>
+        FAQ
+      </a>
+      <a href="api.html" class="public-bottom-nav__item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="16 18 22 12 16 6" />
+          <polyline points="8 6 2 12 8 18" />
+        </svg>
+        API
+      </a>
+      <a href="signup.html" class="public-bottom-nav__item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="9" cy="7" r="4" />
+          <path d="M2 21v-2a4 4 0 0 1 4-4h6a4 4 0 0 1 4 4v2" />
+          <line x1="19" y1="8" x2="19" y2="14" />
+          <line x1="16" y1="11" x2="22" y2="11" />
+        </svg>
+        Sign up
+      </a>
+    </div>
+  </nav>
+
+  <script>
+    // Platform filter chips
+    document.querySelectorAll('.services-filter-chip').forEach(function (chip) {
+      chip.addEventListener('click', function () {
+        document.querySelectorAll('.services-filter-chip').forEach(function (c) { c.classList.remove('is-active'); });
+        chip.classList.add('is-active');
+        var filter = chip.dataset.filter;
+        document.querySelectorAll('.service-category').forEach(function (cat) {
+          cat.style.display = (filter === 'all' || cat.dataset.platform === filter) ? '' : 'none';
+        });
+      });
+    });
+
+    // Search filter (matches service name or ID, hides empty categories)
+    document.getElementById('serviceSearch').addEventListener('input', function (e) {
+      var q = e.target.value.trim().toLowerCase();
+      document.querySelectorAll('.service-category').forEach(function (cat) {
+        var anyVisible = false;
+        cat.querySelectorAll('.service-list-row').forEach(function (row) {
+          var match = row.dataset.name.toLowerCase().includes(q) || row.dataset.id.includes(q);
+          row.style.display = match ? '' : 'none';
+          if (match) anyVisible = true;
+        });
+        cat.style.display = (q === '' || anyVisible) ? '' : 'none';
+      });
+    });
+
+    // Service detail modal
+    document.querySelectorAll('.service-list-row').forEach(function (row) {
+      row.addEventListener('click', function () {
+        document.getElementById('serviceModalTitle').textContent = '#' + row.dataset.id + ' — ' + row.dataset.name;
+        document.getElementById('modalRate').textContent = row.dataset.rate;
+        document.getElementById('modalMinMax').textContent = row.dataset.min + ' – ' + row.dataset.max;
+        document.getElementById('modalTime').textContent = row.dataset.time;
+        document.getElementById('modalRefill').textContent = row.dataset.refill;
+        document.getElementById('modalDescription').innerHTML =
+          '<strong>Quality:</strong> ' + row.dataset.quality + '<br>' +
+          '<strong>Speed:</strong> ' + row.dataset.speed + '<br>' +
+          '<strong>Start:</strong> ' + row.dataset.start + '<br><br>' +
+          '<strong>Notes:</strong><br>— Speed and start time may vary during high-demand periods.<br>— Do not place a second order on the same link before the first completes.';
+        document.getElementById('serviceModal').classList.add('is-open');
+      });
+    });
+
+    function closeServiceModal(e) {
+      if (e.target.classList.contains('modal-overlay') || e.target.classList.contains('modal__close') || e.target.textContent === '✕') {
+        document.getElementById('serviceModal').classList.remove('is-open');
+      }
+    }
+  </script>
+</body>
+
+</html>

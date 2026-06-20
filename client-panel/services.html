@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Services — Boostoraa Panel</title>
+<link rel="icon" type="image/png" href="https://cdnfiles.perfectpanel.com/dwodik/qt8kpqprono9nwp6.png">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/client.css">
+<style>
+/* ── Services-page specific styles ── */
+
+/* Toolbar row: search + platform pills */
+.svc-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+.svc-search-wrap {
+  flex: 1;
+  min-width: 180px;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.svc-search-wrap svg {
+  position: absolute;
+  left: 12px;
+  color: var(--color-text-muted);
+  pointer-events: none;
+  flex-shrink: 0;
+}
+.svc-search-wrap input {
+  width: 100%;
+  padding: 10px 14px 10px 36px;
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: inherit;
+  font-size: 13.5px;
+  transition: border-color 0.15s;
+}
+.svc-search-wrap input:focus {
+  outline: none;
+  border-color: var(--color-blue);
+  background: var(--color-white);
+}
+.platform-pills {
+  display: flex;
+  gap: 8px;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 2px;
+}
+.platform-pills::-webkit-scrollbar { display: none; }
+.platform-pills .pill { flex-shrink: 0; }
+
+/* Category header row */
+.svc-cat-row td {
+  padding: 9px 14px 7px;
+  background: var(--color-bg);
+  border-bottom: 1px solid var(--color-border);
+  border-top: 1px solid var(--color-border);
+}
+.svc-cat-row:first-child td { border-top: none; }
+.svc-cat-label {
+  font-size: 11.5px;
+  font-weight: 700;
+  color: var(--color-navy);
+  text-transform: uppercase;
+  letter-spacing: 0.7px;
+}
+.svc-cat-badge {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--color-blue);
+  background: #e8f3ff;
+  border: 1px solid #b8d8ff;
+  border-radius: 10px;
+  padding: 1px 7px;
+  margin-left: 7px;
+  text-transform: none;
+  letter-spacing: 0;
+  vertical-align: middle;
+}
+
+/* Favourite star */
+.svc-fav {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-border);
+  font-size: 16px;
+  line-height: 1;
+  padding: 2px;
+  transition: color 0.15s;
+}
+.svc-fav.is-fav, .svc-fav:hover { color: var(--color-gold); }
+
+/* Service ID chip */
+.svc-id {
+  display: inline-block;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 5px;
+  white-space: nowrap;
+}
+
+/* Service name cell */
+.svc-name-cell { white-space: normal !important; min-width: 200px; max-width: 500px; }
+.svc-name { font-size: 13px; color: var(--color-text); line-height: 1.5; }
+
+/* Rate cell */
+.svc-rate { font-weight: 700; color: var(--color-blue); font-size: 13px; white-space: nowrap; }
+
+/* Avg time badge */
+.svc-time-cell { white-space: normal !important; }
+.svc-time-badge {
+  display: inline-block;
+  background: #eafaf1;
+  color: #1e7e34;
+  border: 1px solid #b2dfcc;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+/* View button */
+.btn-view {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-blue);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-family: inherit;
+  font-size: 12.5px;
+  font-weight: 700;
+  padding: 7px 16px;
+  cursor: pointer;
+  transition: background 0.15s, box-shadow 0.15s, transform 0.12s;
+  white-space: nowrap;
+}
+.btn-view:hover {
+  background: var(--color-blue-dark);
+  box-shadow: 0 4px 12px rgba(31,111,214,0.28);
+  transform: translateY(-1px);
+}
+
+/* Empty state */
+.svc-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 56px 20px;
+  color: var(--color-text-muted);
+  font-size: 13.5px;
+  text-align: center;
+}
+.svc-empty svg { opacity: 0.3; }
+
+/* ── Modal detail ── */
+.svc-modal-header-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--color-navy);
+  line-height: 1.5;
+  flex: 1;
+  min-width: 0;
+  padding-right: 10px;
+}
+
+.svc-pills-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+.svc-mpill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 20px;
+  padding: 5px 11px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-text);
+}
+.svc-mpill--rate {
+  background: linear-gradient(135deg,#e8f3ff,#d5e9ff);
+  border-color: #b8d8ff;
+  color: var(--color-blue);
+}
+
+/* Info rows table */
+.svc-info-table {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  margin-bottom: 14px;
+}
+.svc-info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 9px 14px;
+  gap: 10px;
+  border-bottom: 1px solid var(--color-border);
+  font-size: 13px;
+}
+.svc-info-row:last-child { border-bottom: none; }
+.svc-info-row:nth-child(even) { background: #f9fafb; }
+.svc-info-key { color: var(--color-text-muted); font-weight: 600; flex-shrink: 0; }
+.svc-info-val { color: var(--color-text); font-weight: 700; text-align: right; }
+
+/* Notes box */
+.svc-notes {
+  display: flex;
+  gap: 9px;
+  align-items: flex-start;
+  background: #fffbef;
+  border: 1px solid #fde68a;
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  font-size: 12.5px;
+  color: #7a5c0c;
+  line-height: 1.65;
+}
+.svc-notes svg { flex-shrink: 0; margin-top: 1px; color: #b8860b; }
+
+/* Create order btn */
+.btn-create-order {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 13px 20px;
+  background: linear-gradient(135deg, var(--color-blue) 0%, var(--color-blue-dark) 100%);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-family: inherit;
+  font-size: 14.5px;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: none;
+  transition: box-shadow 0.15s, transform 0.12s;
+}
+.btn-create-order:hover {
+  box-shadow: 0 8px 22px rgba(31,111,214,0.32);
+  transform: translateY(-1px);
+}
+
+/* Responsive table — hide columns on small screens */
+@media (max-width: 640px) {
+  .col-min, .col-max { display: none; }
+}
+@media (max-width: 480px) {
+  .col-time { display: none; }
+  .svc-toolbar { gap: 10px; }
+}
+
+/* Modal bottom-sheet on phones */
+@media (max-width: 540px) {
+  .modal-overlay { align-items: flex-end; padding: 0; }
+  .modal {
+    max-width: 100%;
+    border-radius: 18px 18px 0 0;
+    max-height: 88vh;
+  }
+}
+</style>
+</head>
+<body>
+<div class="app">
+
+  <!-- ═══ SIDEBAR ═══ -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar__brand">
+      <div class="sidebar__brand-icon">
+        <img src="https://cdnfiles.perfectpanel.com/dwodik/qt8kpqprono9nwp6.png" alt="Boostoraa">
+      </div>
+      <span class="sidebar__brand-name">Boostoraa</span>
+    </div>
+    <nav class="sidebar__menu">
+      <a href="new-order.html" class="sidebar__item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2M9 5a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2M9 5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2"/></svg>
+        New order
+      </a>
+      <a href="services.html" class="sidebar__item is-active">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+        Services
+      </a>
+      <a href="orders.html" class="sidebar__item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        Orders
+      </a>
+      <a href="add-funds.html" class="sidebar__item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+        Add funds
+      </a>
+      <a href="api.html" class="sidebar__item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        API
+      </a>
+      <a href="affiliates.html" class="sidebar__item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        Affiliates
+      </a>
+      <a href="child-panel.html" class="sidebar__item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 9h6v6H9z"/></svg>
+        Child panel
+      </a>
+      <a href="mass-order.html" class="sidebar__item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+        Mass order
+      </a>
+      <a href="updates.html" class="sidebar__item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 2v6h-6M3 12a9 9 0 0 1 15-6.7L21 8M3 22v-6h6M21 12a9 9 0 0 1-15 6.7L3 16"/></svg>
+        Updates
+      </a>
+    </nav>
+    <div class="sidebar__footer">© 2026 Boostoraa</div>
+  </aside>
+
+  <!-- ═══ MAIN ═══ -->
+  <div class="main">
+
+    <!-- TOPBAR — identical structure to new-order.html -->
+    <header class="topbar">
+      <button class="topbar__menu-toggle" id="menuToggle" aria-label="Open menu">☰</button>
+
+      <!-- Brand (visible on mobile when sidebar is hidden) -->
+      <a href="new-order.html" class="topbar__brand">
+        <img src="https://cdnfiles.perfectpanel.com/dwodik/qt8kpqprono9nwp6.png" alt="Boostoraa" class="topbar__brand-logo">
+        <span class="topbar__brand-name">Boostoraa</span>
+      </a>
+
+      <div class="topbar__right">
+        <select class="balance-pill">
+          <option>PKR 20.00</option>
+          <option>USD $</option>
+          <option>AED د.إ</option>
+          <option>SAR ر.س</option>
+        </select>
+        <a href="account.html" class="topbar__link">Account</a>
+        <a href="../public/index.html" class="topbar__link">Logout</a>
+        <a href="account.html" class="topbar__avatar" aria-label="Account">U</a>
+      </div>
+    </header>
+
+    <!-- PAGE -->
+    <main class="page">
+      <div class="page__header">
+        <div>
+          <div class="page__title">Services</div>
+          <div class="page__subtitle">Browse all available SMM services — click <strong>View</strong> to see details and place an order</div>
+        </div>
+      </div>
+
+      <!-- Toolbar: search + platform filter -->
+      <div class="svc-toolbar">
+        <div class="svc-search-wrap">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          </svg>
+          <input type="text" id="svcSearch" placeholder="Search by name, ID or category…" autocomplete="off">
+        </div>
+        <div class="platform-pills pill-group" id="platformPills">
+          <button class="pill is-active" data-plat="all" type="button">All</button>
+          <button class="pill" data-plat="facebook" type="button">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="#1877F2"><path d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.79-4.69 4.53-4.69 1.31 0 2.68.24 2.68.24v2.97h-1.51c-1.49 0-1.96.93-1.96 1.89v2.25h3.33l-.53 3.49h-2.8V24C19.61 23.1 24 18.1 24 12.07z"/></svg>
+            Facebook
+          </button>
+          <button class="pill" data-plat="tiktok" type="button">
+            <svg width="13" height="13" viewBox="0 0 24 24"><path d="M16.6 5.8c-.9-1-1.5-2.3-1.5-3.8h-3.1v14.4a3.2 3.2 0 1 1-2.7-3.16v-3.16A6.3 6.3 0 1 0 15 16.3V9.4a7.5 7.5 0 0 0 4.4 1.4V7.7c-1.1 0-2.1-.4-2.8-1.1z" fill="#000"/></svg>
+            TikTok
+          </button>
+          <button class="pill" data-plat="instagram" type="button">
+            <svg width="13" height="13" viewBox="0 0 24 24"><defs><linearGradient id="igP" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#FFDC80"/><stop offset="55%" stop-color="#E1306C"/><stop offset="100%" stop-color="#833AB4"/></linearGradient></defs><rect x="2" y="2" width="20" height="20" rx="6" fill="url(#igP)"/><circle cx="12" cy="12" r="4.6" fill="none" stroke="#fff" stroke-width="1.6"/><circle cx="17.4" cy="6.6" r="1.2" fill="#fff"/></svg>
+            Instagram
+          </button>
+          <button class="pill" data-plat="youtube" type="button">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="#FF0000"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8z"/><path d="M9.6 15.5V8.5l6.3 3.5z" fill="#fff"/></svg>
+            YouTube
+          </button>
+        </div>
+      </div>
+
+      <!-- Services table -->
+      <div class="card" style="padding:0; overflow:hidden;">
+        <div class="table-wrap">
+          <table class="data-table" id="svcTable">
+            <thead>
+              <tr>
+                <th style="width:36px;"></th>
+                <th style="width:52px;">ID</th>
+                <th>Service</th>
+                <th style="width:120px;">Rate / 1000</th>
+                <th class="col-min" style="width:75px;">Min</th>
+                <th class="col-max" style="width:100px;">Max</th>
+                <th class="col-time" style="width:150px;">Avg. Time</th>
+                <th style="width:80px; text-align:center;">Details</th>
+              </tr>
+            </thead>
+            <tbody id="svcBody"></tbody>
+          </table>
+        </div>
+        <div class="svc-empty" id="svcEmpty" style="display:none;">
+          <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          </svg>
+          <span>No services match your search.</span>
+        </div>
+      </div>
+
+    </main>
+  </div><!-- /main -->
+</div><!-- /app -->
+
+<!-- ═══ SERVICE DETAIL MODAL ═══ -->
+<div class="modal-overlay" id="svcModal">
+  <div class="modal">
+    <div class="modal__header">
+      <div class="svc-modal-header-title" id="modalTitle">Service Details</div>
+      <button class="modal__close" id="modalClose" aria-label="Close">✕</button>
+    </div>
+    <div class="modal__body">
+      <div class="svc-pills-row" id="modalPills"></div>
+      <div class="svc-info-table" id="modalInfo"></div>
+      <div class="svc-notes">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="9"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
+        </svg>
+        <div>
+          <strong>Notes:</strong><br>
+          – Speed and start time may vary during high demand periods.<br>
+          – Do not place a second order on the same link before the first one completes.
+        </div>
+      </div>
+    </div>
+    <div class="modal__footer">
+      <a id="modalOrderBtn" href="new-order.html" class="btn-create-order">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+          <path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2M9 5a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2M9 5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2"/>
+        </svg>
+        Create order
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- WhatsApp FAB -->
+<a href="https://api.whatsapp.com/send?phone=923476471346" target="_blank" rel="noopener" class="fab-whatsapp" aria-label="WhatsApp support">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="white">
+    <path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.38 5.07L2 22l5.07-1.33A9.94 9.94 0 0 0 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18c-1.6 0-3.1-.46-4.36-1.25l-.31-.19-3.01.79.8-2.93-.2-.32A7.93 7.93 0 0 1 4 12c0-4.41 3.59-8 8-8s8 3.59 8 8-3.59 8-8 8zm4.4-5.6c-.24-.12-1.43-.7-1.65-.78-.22-.08-.38-.12-.54.12-.16.24-.62.78-.76.94-.14.16-.28.18-.52.06-.24-.12-1.01-.37-1.92-1.18-.71-.63-1.19-1.41-1.33-1.65-.14-.24-.01-.37.11-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.74-1.78-.19-.46-.39-.4-.54-.41h-.46c-.16 0-.42.06-.64.3-.22.24-.84.82-.84 2s.86 2.32.98 2.48c.12.16 1.69 2.58 4.1 3.62.57.25 1.02.4 1.37.51.57.18 1.09.16 1.5.1.46-.07 1.43-.58 1.63-1.15.2-.56.2-1.04.14-1.15-.06-.1-.22-.16-.46-.28z"/>
+  </svg>
+</a>
+
+<!-- Mobile Bottom Nav -->
+<nav class="bottom-nav">
+  <div class="bottom-nav__inner">
+    <a href="new-order.html" class="bottom-nav__item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2M9 5a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2M9 5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2"/></svg>
+      Order
+    </a>
+    <a href="services.html" class="bottom-nav__item is-active">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+      Services
+    </a>
+    <a href="orders.html" class="bottom-nav__item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+      Orders
+    </a>
+    <a href="add-funds.html" class="bottom-nav__item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+      Funds
+    </a>
+    <button class="bottom-nav__item" id="moreToggle" type="button">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></svg>
+      More
+    </button>
+  </div>
+</nav>
+
+<!-- More Sheet -->
+<div class="more-sheet-overlay" id="moreSheetOverlay">
+  <div class="more-sheet">
+    <div class="more-sheet__handle"></div>
+    <a href="api.html" class="more-sheet__item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>API
+    </a>
+    <a href="affiliates.html" class="more-sheet__item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>Affiliates
+    </a>
+    <a href="child-panel.html" class="more-sheet__item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 9h6v6H9z"/></svg>Child panel
+    </a>
+    <a href="mass-order.html" class="more-sheet__item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>Mass order
+    </a>
+    <a href="updates.html" class="more-sheet__item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 2v6h-6M3 12a9 9 0 0 1 15-6.7L21 8M3 22v-6h6M21 12a9 9 0 0 1-15 6.7L3 16"/></svg>Updates
+    </a>
+    <a href="account.html" class="more-sheet__item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></svg>Account
+    </a>
+  </div>
+</div>
+
+<script>
+/* ═══ SERVICE DATA ═══ */
+const SERVICES = [
+  /* Facebook Page Followers */
+  {id:43,platform:'facebook',category:'Facebook Page Followers',isNew:false,
+   name:'Facebook Followers | Hidden Data | All Type Profile & Page | Low Drop | No Refill ⚠️ | Instant Start | Day 50K',
+   rate:78.54,min:10,max:1000000,avgTime:'7 minutes',
+   info:{Location:'Global',Quality:'Hidden Accounts','Start Time':'0–5 Minutes',Speed:'Day 50K',Refill:'No Refill ⚠️','Drop Rate':'Low Drop','Example Link':'Profile or Page Link'}},
+  {id:42,platform:'facebook',category:'Facebook Page Followers',isNew:false,
+   name:'Facebook Followers | Max 1M | All Type Profile & Page | Non Drop | No Refill ⚠️ | Instant Start | Day 200K 🚀',
+   rate:89.24,min:10,max:1000000,avgTime:'',
+   info:{Location:'Global',Quality:'Real Looking','Start Time':'Instant',Speed:'Day 200K',Refill:'No Refill ⚠️','Drop Rate':'Non Drop','Example Link':'Profile or Page Link'}},
+
+  /* Facebook Video Views */
+  {id:44,platform:'facebook',category:'Facebook Video Views [ High Speed ]',isNew:true,
+   name:'Facebook Views (Video/Reels) [ Max 100M ] | Non Drop | Cancel Enable | Lifetime ♻️ | Instant Start | Day 500K 🚀',
+   rate:12.36,min:10,max:2147483647,avgTime:'28 hours 50 minutes',
+   info:{Quality:'Mixed Views','Start Time':'Instant',Speed:'Day 500K',Refill:'Lifetime ♻️','Drop Rate':'Non Drop','Cancel Enable':'Yes','Link Type':'Video / Reels Link'}},
+  {id:45,platform:'facebook',category:'Facebook Video Views [ High Speed ]',isNew:true,
+   name:'Facebook Views (Video/Reels) [ Max 100M ] | Non Drop | Cancel Enable | Lifetime ♻️ | Instant Start | Day 1M 🚀',
+   rate:16.71,min:100,max:100000000,avgTime:'6 minutes',
+   info:{Quality:'Mixed Views','Start Time':'Instant',Speed:'Day 1M',Refill:'Lifetime ♻️','Drop Rate':'Non Drop','Cancel Enable':'Yes','Link Type':'Video / Reels Link'}},
+  {id:46,platform:'facebook',category:'Facebook Video Views [ High Speed ]',isNew:true,
+   name:'Facebook Views (Video/Reels) [ Max 100M ] | Non Drop | Cancel Enable | Lifetime ♻️ | Instant Start | Day 100K 🚀',
+   rate:12.25,min:100,max:2147483647,avgTime:'',
+   info:{Quality:'Mixed Views','Start Time':'Instant',Speed:'Day 100K',Refill:'Lifetime ♻️','Drop Rate':'Non Drop','Cancel Enable':'Yes','Link Type':'Video / Reels Link'}},
+  {id:76,platform:'facebook',category:'Facebook Video Views [ High Speed ]',isNew:true,
+   name:'Facebook Views (Video/Reels) | Max 100M | Non Drop | Lifetime ♻️ | Instant Start | Day 1M 🚀',
+   rate:10.44,min:100,max:10000000,avgTime:'',
+   info:{Quality:'Mixed Views','Start Time':'Instant',Speed:'Day 1M',Refill:'Lifetime ♻️','Drop Rate':'Non Drop','Link Type':'Video / Reels Link'}},
+  {id:77,platform:'facebook',category:'Facebook Video Views [ High Speed ]',isNew:true,
+   name:'Facebook Views (Video/Reels) [ Max 100M ] | Non Drop | Cancel Enable | Lifetime ♻️ | Instant Start | Day 50K 🚀',
+   rate:8.36,min:500,max:2147483647,avgTime:'3 hours 18 minutes',
+   info:{Quality:'Mixed Views','Start Time':'Instant',Speed:'Day 50K',Refill:'Lifetime ♻️','Drop Rate':'Non Drop','Cancel Enable':'Yes','Link Type':'Video / Reels Link'}},
+
+  /* Facebook Post Reactions */
+  {id:47,platform:'facebook',category:'Facebook Post Reactions [ Cheapest in The Market ]',isNew:true,
+   name:'Facebook Post Reactions [ Likes 👍 ] [ Max 500K ] | HQ Accounts | No Refill ⚠️ | Instant Start | Day 50K 🚀',
+   rate:65.08,min:10,max:500000,avgTime:'',
+   info:{Quality:'HQ Accounts','Start Time':'Instant',Speed:'Day 50K',Refill:'No Refill ⚠️','Drop Rate':'Low Drop','Link Type':'Post Link'}},
+  {id:48,platform:'facebook',category:'Facebook Post Reactions [ Cheapest in The Market ]',isNew:true,
+   name:'Facebook Post Reactions [ Love ❤️ ] [ Max 500K ] | HQ Accounts | No Refill ⚠️ | Instant Start | Day 50K 🚀',
+   rate:65.08,min:10,max:500000,avgTime:'',
+   info:{Quality:'HQ Accounts','Start Time':'Instant',Speed:'Day 50K',Refill:'No Refill ⚠️','Drop Rate':'Low Drop','Link Type':'Post Link'}},
+  {id:49,platform:'facebook',category:'Facebook Post Reactions [ Cheapest in The Market ]',isNew:true,
+   name:'Facebook Post Reactions [ Wow 😲 ] [ Max 500K ] | HQ Accounts | No Refill ⚠️ | Instant Start | Day 50K 🚀',
+   rate:65.08,min:10,max:500000,avgTime:'',
+   info:{Quality:'HQ Accounts','Start Time':'Instant',Speed:'Day 50K',Refill:'No Refill ⚠️','Drop Rate':'Low Drop','Link Type':'Post Link'}},
+  {id:50,platform:'facebook',category:'Facebook Post Reactions [ Cheapest in The Market ]',isNew:true,
+   name:'Facebook Post Reactions [ Care 🤗 ] [ Max 500K ] | HQ Accounts | No Refill ⚠️ | Instant Start | Day 50K 🚀',
+   rate:65.08,min:10,max:500000,avgTime:'',
+   info:{Quality:'HQ Accounts','Start Time':'Instant',Speed:'Day 50K',Refill:'No Refill ⚠️','Drop Rate':'Low Drop','Link Type':'Post Link'}},
+  {id:51,platform:'facebook',category:'Facebook Post Reactions [ Cheapest in The Market ]',isNew:true,
+   name:'Facebook Post Reactions [ Haha 😄 ] [ Max 500K ] | HQ Accounts | No Refill ⚠️ | Instant Start | Day 50K 🚀',
+   rate:65.08,min:10,max:500000,avgTime:'',
+   info:{Quality:'HQ Accounts','Start Time':'Instant',Speed:'Day 50K',Refill:'No Refill ⚠️','Drop Rate':'Low Drop','Link Type':'Post Link'}},
+  {id:52,platform:'facebook',category:'Facebook Post Reactions [ Cheapest in The Market ]',isNew:true,
+   name:'Facebook Post Reactions [ Sad 😥 ] [ Max 500K ] | HQ Accounts | No Refill ⚠️ | Instant Start | Day 50K 🚀',
+   rate:65.08,min:10,max:500000,avgTime:'',
+   info:{Quality:'HQ Accounts','Start Time':'Instant',Speed:'Day 50K',Refill:'No Refill ⚠️','Drop Rate':'Low Drop','Link Type':'Post Link'}},
+  {id:53,platform:'facebook',category:'Facebook Post Reactions [ Cheapest in The Market ]',isNew:true,
+   name:'Facebook Post Reactions [ Angry 😡 ] [ Max 500K ] | HQ Accounts | No Refill ⚠️ | Instant Start | Day 50K 🚀',
+   rate:65.08,min:10,max:500000,avgTime:'',
+   info:{Quality:'HQ Accounts','Start Time':'Instant',Speed:'Day 50K',Refill:'No Refill ⚠️','Drop Rate':'Low Drop','Link Type':'Post Link'}},
+
+  /* Facebook Comments */
+  {id:54,platform:'facebook',category:'Facebook Comments - Own Server',isNew:false,
+   name:'Facebook Comments | Custom | No Refill ⚠️ | Non Drop | Instant 🚀',
+   rate:75.42,min:10,max:100000000,avgTime:'6 minutes',
+   info:{Quality:'Custom Comments','Start Time':'Instant',Speed:'Very Fast',Refill:'No Refill ⚠️','Drop Rate':'Non Drop','Link Type':'Post Link'}},
+  {id:55,platform:'facebook',category:'Facebook Comments - Own Server',isNew:false,
+   name:'Facebook Comments | Hidden / Random | No Refill ⚠️ | Non Drop | Instant 🚀',
+   rate:75.42,min:10,max:100000000,avgTime:'',
+   info:{Quality:'Random Comments','Start Time':'Instant',Speed:'Very Fast',Refill:'No Refill ⚠️','Drop Rate':'Non Drop','Link Type':'Post Link'}},
+  {id:56,platform:'facebook',category:'Facebook Comments - Own Server',isNew:false,
+   name:'Facebook Comments | Hidden / Random | Lifetime ♻️ | Non Drop | Instant 🚀',
+   rate:94.09,min:10,max:100000000,avgTime:'',
+   info:{Quality:'Random Comments','Start Time':'Instant',Speed:'Very Fast',Refill:'Lifetime ♻️','Drop Rate':'Non Drop','Link Type':'Post Link'}},
+
+  /* TikTok Followers */
+  {id:58,platform:'tiktok',category:'TikTok Followers [ Cheapest - Working ]',isNew:true,
+   name:'TikTok Followers [ Max 1M ] | 100% Real Accounts | 7 Days ♻️ | Instant Start | Day 100K 🚀',
+   rate:227.14,min:10,max:1000000,avgTime:'',
+   info:{Quality:'100% Real Accounts','Start Time':'Instant',Speed:'Day 100K',Refill:'7 Days ♻️','Drop Rate':'Low Drop','Link Type':'Profile Link'}},
+  {id:59,platform:'tiktok',category:'TikTok Followers [ Cheapest - Working ]',isNew:true,
+   name:'TikTok Followers [ Max 1M ] | 100% Real Accounts | 15 Days ♻️ | Instant Start | Day 100K 🚀',
+   rate:243.84,min:10,max:1000000,avgTime:'',
+   info:{Quality:'100% Real Accounts','Start Time':'Instant',Speed:'Day 100K',Refill:'15 Days ♻️','Drop Rate':'Low Drop','Link Type':'Profile Link'}},
+  {id:60,platform:'tiktok',category:'TikTok Followers [ Cheapest - Working ]',isNew:true,
+   name:'TikTok Followers [ Max 1M ] | 100% Real Accounts | 20 Days ♻️ | Instant Start | Day 100K 🚀',
+   rate:260.54,min:10,max:1000000,avgTime:'',
+   info:{Quality:'100% Real Accounts','Start Time':'Instant',Speed:'Day 100K',Refill:'20 Days ♻️','Drop Rate':'Low Drop','Link Type':'Profile Link'}},
+  {id:61,platform:'tiktok',category:'TikTok Followers [ Cheapest - Working ]',isNew:true,
+   name:'TikTok Followers [ Max 1M ] | 100% Real Accounts | 30 Days ♻️ | Instant Start | Day 100K 🚀',
+   rate:277.24,min:10,max:1000000,avgTime:'',
+   info:{Quality:'100% Real Accounts','Start Time':'Instant',Speed:'Day 100K',Refill:'30 Days ♻️','Drop Rate':'Low Drop','Link Type':'Profile Link'}},
+
+  /* Instagram Likes */
+  {id:62,platform:'instagram',category:'Instagram Likes [LQ Accounts]',isNew:false,
+   name:'Instagram Likes [ Max 1M ] | LQ Accounts | Cancel Enable | Low Drop | No Refill ⚠️ | Instant Start | Day 100K 🚀',
+   rate:20.34,min:10,max:1000000,avgTime:'',
+   info:{Quality:'LQ Accounts','Start Time':'Instant',Speed:'Day 100K',Refill:'No Refill ⚠️','Drop Rate':'Low Drop','Cancel Enable':'Yes','Link Type':'Post Link'}},
+  {id:63,platform:'instagram',category:'Instagram Likes [LQ Accounts]',isNew:false,
+   name:'Instagram Likes [ Max 1M ] | LQ Accounts | Cancel Enable | Low Drop | 30 Days ♻️ | Instant Start | Day 100K 🚀',
+   rate:20.80,min:10,max:1000000,avgTime:'',
+   info:{Quality:'LQ Accounts','Start Time':'Instant',Speed:'Day 100K',Refill:'30 Days ♻️','Drop Rate':'Low Drop','Cancel Enable':'Yes','Link Type':'Post Link'}},
+  {id:64,platform:'instagram',category:'Instagram Likes [LQ Accounts]',isNew:false,
+   name:'Instagram Likes [ Max 1M ] | LQ Accounts | Cancel Enable | Low Drop | 60 Days ♻️ | Instant Start | Day 100K 🚀',
+   rate:21.22,min:10,max:1000000,avgTime:'',
+   info:{Quality:'LQ Accounts','Start Time':'Instant',Speed:'Day 100K',Refill:'60 Days ♻️','Drop Rate':'Low Drop','Cancel Enable':'Yes','Link Type':'Post Link'}},
+  {id:65,platform:'instagram',category:'Instagram Likes [LQ Accounts]',isNew:false,
+   name:'Instagram Likes [ Max 1M ] | LQ Accounts | Cancel Enable | Low Drop | 90 Days ♻️ | Instant Start | Day 100K 🚀',
+   rate:21.63,min:10,max:1000000,avgTime:'',
+   info:{Quality:'LQ Accounts','Start Time':'Instant',Speed:'Day 100K',Refill:'90 Days ♻️','Drop Rate':'Low Drop','Cancel Enable':'Yes','Link Type':'Post Link'}},
+  {id:66,platform:'instagram',category:'Instagram Likes [LQ Accounts]',isNew:false,
+   name:'Instagram Likes [ Max 1M ] | LQ Accounts | Cancel Enable | Low Drop | 365 Days ♻️ | Instant Start | Day 100K 🚀',
+   rate:22.05,min:10,max:1000000,avgTime:'',
+   info:{Quality:'LQ Accounts','Start Time':'Instant',Speed:'Day 100K',Refill:'365 Days ♻️','Drop Rate':'Low Drop','Cancel Enable':'Yes','Link Type':'Post Link'}},
+  {id:67,platform:'instagram',category:'Instagram Likes [LQ Accounts]',isNew:false,
+   name:'Instagram Likes [ Max 1M ] | LQ Accounts | Cancel Enable | Low Drop | Lifetime ♻️ | Instant Start | Day 100K 🚀',
+   rate:22.47,min:10,max:1000000,avgTime:'',
+   info:{Quality:'LQ Accounts','Start Time':'Instant',Speed:'Day 100K',Refill:'Lifetime ♻️','Drop Rate':'Low Drop','Cancel Enable':'Yes','Link Type':'Post Link'}},
+
+  /* YouTube */
+  {id:68,platform:'youtube',category:'YouTube Subscribers [ Non Drop ]',isNew:true,
+   name:'Youtube Subscribers | Non Drop | 30 Days Refill ♻️ | 3K–5K/Day | Instant Start',
+   rate:8560.49,min:100,max:5000,avgTime:'',
+   info:{Quality:'Real Accounts','Start Time':'Instant',Speed:'3K–5K / Day',Refill:'30 Days ♻️','Drop Rate':'Non Drop','Link Type':'Channel Link'}},
+  {id:69,platform:'youtube',category:'YouTube Watchtime – 4000H',isNew:false,
+   name:'Youtube Watchtime | 15+ Minutes Video | Real Views | 1000 Views = 120 Hours | ♻️ 30 Days Refill',
+   rate:4199.04,min:100,max:32000,avgTime:'',
+   info:{Quality:'Real Views','Video Length':'15+ Minutes',Hours:'1000 Views = 120 Hours',Refill:'30 Days ♻️','Link Type':'Video Link'}},
+  {id:70,platform:'youtube',category:'YouTube Watchtime – 4000H',isNew:false,
+   name:'Youtube Watchtime | 30+ Minutes Video | Real Views | 1000 Views = 250 Hours | ♻️ 30 Days Refill',
+   rate:5297.40,min:100,max:16000,avgTime:'',
+   info:{Quality:'Real Views','Video Length':'30+ Minutes',Hours:'1000 Views = 250 Hours',Refill:'30 Days ♻️','Link Type':'Video Link'}},
+  {id:71,platform:'youtube',category:'YouTube Watchtime – 4000H',isNew:false,
+   name:'Youtube Watchtime | 40–45+ Minutes Video | Real Views | 1000 Views = 1000 Hours | ♻️ 30 Days Refill',
+   rate:7873.19,min:100,max:4000,avgTime:'',
+   info:{Quality:'Real Views','Video Length':'40–45+ Minutes',Hours:'1000 Views = 1000 Hours',Refill:'30 Days ♻️','Link Type':'Video Link'}},
+  {id:72,platform:'youtube',category:'YouTube Watchtime – 4000H',isNew:false,
+   name:'Youtube Watchtime | 60+ Minutes Video | Real Views | 1000 Views = 1000 Hours | ♻️ 30 Days Refill',
+   rate:7873.19,min:100,max:4000,avgTime:'',
+   info:{Quality:'Real Views','Video Length':'60+ Minutes',Hours:'1000 Views = 1000 Hours',Refill:'30 Days ♻️','Link Type':'Video Link'}},
+  {id:73,platform:'youtube',category:'YouTube Likes',isNew:true,
+   name:'YouTube Likes | Video / Shorts / LiveStream | Max 1K | 100% Real Accounts | Non Drop | 30 Days ♻️ | Instant Start | Hour 1K 🚀',
+   rate:267.22,min:10,max:1000,avgTime:'',
+   info:{Quality:'100% Real Accounts','Start Time':'Instant',Speed:'1K / Hour',Refill:'30 Days ♻️','Drop Rate':'Non Drop','Link Type':'Video / Shorts / Stream Link'}},
+  {id:74,platform:'youtube',category:'YouTube Likes',isNew:true,
+   name:'YouTube Likes | Video / Shorts / LiveStream | Max 5K | 100% Real Accounts | Non Drop | 30 Days ♻️ | Instant Start | Day 5K 🚀',
+   rate:668.04,min:10,max:5000,avgTime:'',
+   info:{Quality:'100% Real Accounts','Start Time':'Instant',Speed:'Day 5K',Refill:'30 Days ♻️','Drop Rate':'Non Drop','Link Type':'Video / Shorts / Stream Link'}},
+  {id:75,platform:'youtube',category:'YouTube Likes',isNew:true,
+   name:'YouTube Likes [ Max 5K ] | Almost No Drop | No Refill ⚠️ | Instant Start | 1K/Hour 🚀',
+   rate:575.64,min:10,max:5000,avgTime:'',
+   info:{Quality:'Mixed Accounts','Start Time':'Instant',Speed:'1K / Hour',Refill:'No Refill ⚠️','Drop Rate':'Almost No Drop','Link Type':'Video / Shorts / Stream Link'}},
+
+  /* Facebook Story Reactions */
+  {id:78,platform:'facebook',category:'Facebook Story Reactions - Own Server',isNew:false,
+   name:'Facebook Stories Reaction | 👍 | Non Drop | Instant Start — Own Server',
+   rate:11.68,min:100,max:100000000,avgTime:'',
+   info:{Quality:'Own Server','Start Time':'Instant',Speed:'Very Fast',Refill:'No Refill','Drop Rate':'Non Drop','Link Type':'Story Link'}},
+  {id:79,platform:'facebook',category:'Facebook Story Reactions - Own Server',isNew:false,
+   name:'Facebook Stories Reaction | ❤️ | Non Drop | Instant Start — Own Server',
+   rate:11.68,min:100,max:100000000,avgTime:'',
+   info:{Quality:'Own Server','Start Time':'Instant',Speed:'Very Fast',Refill:'No Refill','Drop Rate':'Non Drop','Link Type':'Story Link'}},
+  {id:80,platform:'facebook',category:'Facebook Story Reactions - Own Server',isNew:false,
+   name:'Facebook Stories Reaction | 🤗 | Non Drop | Instant Start — Own Server',
+   rate:11.68,min:100,max:100000000,avgTime:'',info:{Quality:'Own Server','Start Time':'Instant',Speed:'Very Fast',Refill:'No Refill','Drop Rate':'Non Drop','Link Type':'Story Link'}},
+  {id:81,platform:'facebook',category:'Facebook Story Reactions - Own Server',isNew:false,
+   name:'Facebook Stories Reaction | 😲 | Non Drop | Instant Start — Own Server',
+   rate:11.68,min:100,max:100000000,avgTime:'',info:{Quality:'Own Server','Start Time':'Instant',Speed:'Very Fast',Refill:'No Refill','Drop Rate':'Non Drop','Link Type':'Story Link'}},
+  {id:82,platform:'facebook',category:'Facebook Story Reactions - Own Server',isNew:false,
+   name:'Facebook Stories Reaction | 😂 | Non Drop | Instant Start — Own Server',
+   rate:11.68,min:100,max:100000000,avgTime:'',info:{Quality:'Own Server','Start Time':'Instant',Speed:'Very Fast',Refill:'No Refill','Drop Rate':'Non Drop','Link Type':'Story Link'}},
+  {id:83,platform:'facebook',category:'Facebook Story Reactions - Own Server',isNew:false,
+   name:'Facebook Stories Reaction | 😢 | Non Drop | Instant Start — Own Server',
+   rate:11.68,min:100,max:100000000,avgTime:'',info:{Quality:'Own Server','Start Time':'Instant',Speed:'Very Fast',Refill:'No Refill','Drop Rate':'Non Drop','Link Type':'Story Link'}},
+  {id:84,platform:'facebook',category:'Facebook Story Reactions - Own Server',isNew:false,
+   name:'Facebook Stories Reaction | 😡 | Non Drop | Instant Start — Own Server',
+   rate:11.68,min:100,max:100000000,avgTime:'',info:{Quality:'Own Server','Start Time':'Instant',Speed:'Very Fast',Refill:'No Refill','Drop Rate':'Non Drop','Link Type':'Story Link'}},
+  {id:85,platform:'facebook',category:'Facebook Story Reactions - Own Server',isNew:false,
+   name:'Facebook Stories Reaction | 👍❤️ | Non Drop | Instant Start — Own Server',
+   rate:11.68,min:100,max:100000000,avgTime:'',info:{Quality:'Own Server','Start Time':'Instant',Speed:'Very Fast',Refill:'No Refill','Drop Rate':'Non Drop','Link Type':'Story Link'}},
+  {id:86,platform:'facebook',category:'Facebook Story Reactions - Own Server',isNew:false,
+   name:'Facebook Stories Reaction | 👍❤️😝 | Non Drop | Instant Start — Own Server',
+   rate:11.68,min:100,max:100000000,avgTime:'',info:{Quality:'Own Server','Start Time':'Instant',Speed:'Very Fast',Refill:'No Refill','Drop Rate':'Non Drop','Link Type':'Story Link'}},
+  {id:87,platform:'facebook',category:'Facebook Story Reactions - Own Server',isNew:false,
+   name:'Facebook Stories Reaction | 👍❤️😝🤗😲 | Non Drop | Instant Start — Own Server',
+   rate:11.68,min:100,max:100000000,avgTime:'',info:{Quality:'Own Server','Start Time':'Instant',Speed:'Very Fast',Refill:'No Refill','Drop Rate':'Non Drop','Link Type':'Story Link'}},
+  {id:88,platform:'facebook',category:'Facebook Story Reactions - Own Server',isNew:false,
+   name:'Facebook Stories Reactions | 👍❤️😝🤗😲😡 | Non Drop | Instant Start — Own Server',
+   rate:11.68,min:100,max:100000000,avgTime:'',info:{Quality:'Own Server','Start Time':'Instant',Speed:'Very Fast',Refill:'No Refill','Drop Rate':'Non Drop','Link Type':'Story Link'}}
+];
+
+/* ── Helpers ── */
+const fmt  = n => Number(n).toLocaleString();
+const fmtR = n => 'PKR ' + Number(n).toFixed(2);
+let favs   = JSON.parse(localStorage.getItem('svc_favs') || '[]');
+const saveFavs = () => localStorage.setItem('svc_favs', JSON.stringify(favs));
+
+/* ── State ── */
+let activePlat = 'all', searchQ = '';
+
+/* ── Render ── */
+function render() {
+  const tbody = document.getElementById('svcBody');
+  const empty = document.getElementById('svcEmpty');
+  const q = searchQ.trim().toLowerCase();
+
+  const list = SERVICES.filter(s => {
+    if (activePlat !== 'all' && s.platform !== activePlat) return false;
+    if (q && !s.name.toLowerCase().includes(q) && !s.category.toLowerCase().includes(q) && !String(s.id).includes(q)) return false;
+    return true;
+  });
+
+  if (!list.length) { tbody.innerHTML = ''; empty.style.display = 'flex'; return; }
+  empty.style.display = 'none';
+
+  // Group by category
+  const groups = {};
+  list.forEach(s => { (groups[s.category] = groups[s.category] || []).push(s); });
+
+  let html = '';
+  Object.entries(groups).forEach(([cat, svcs]) => {
+    const isNew = svcs[0].isNew;
+    html += `<tr class="svc-cat-row"><td colspan="8">
+      <span class="svc-cat-label">${cat}</span>
+      ${isNew ? '<span class="svc-cat-badge">NEW</span>' : ''}
+    </td></tr>`;
+    svcs.forEach(s => {
+      const isFav = favs.includes(s.id);
+      html += `<tr class="service-row" data-id="${s.id}">
+        <td><button class="svc-fav${isFav?' is-fav':''}" data-id="${s.id}" title="Favourite" type="button">☆</button></td>
+        <td><span class="svc-id">${s.id}</span></td>
+        <td class="svc-name-cell"><span class="svc-name">${s.name}</span></td>
+        <td><span class="svc-rate">${fmtR(s.rate)}</span></td>
+        <td class="col-min">${fmt(s.min)}</td>
+        <td class="col-max">${fmt(s.max)}</td>
+        <td class="svc-time-cell col-time">${s.avgTime ? `<span class="svc-time-badge">${s.avgTime}</span>` : '<span style="color:var(--color-border)">—</span>'}</td>
+        <td style="text-align:center"><button class="btn-view" data-id="${s.id}" type="button">View</button></td>
+      </tr>`;
+    });
+  });
+  tbody.innerHTML = html;
+
+  // Wire events
+  tbody.querySelectorAll('.btn-view').forEach(b => b.addEventListener('click', e => { e.stopPropagation(); openModal(+b.dataset.id); }));
+  tbody.querySelectorAll('.service-row').forEach(r => r.addEventListener('click', () => openModal(+r.dataset.id)));
+  tbody.querySelectorAll('.svc-fav').forEach(b => b.addEventListener('click', e => { e.stopPropagation(); toggleFav(+b.dataset.id, b); }));
+}
+
+function toggleFav(id, btn) {
+  if (favs.includes(id)) { favs = favs.filter(x => x !== id); btn.classList.remove('is-fav'); }
+  else { favs.push(id); btn.classList.add('is-fav'); }
+  saveFavs();
+}
+
+/* ── Modal ── */
+function openModal(id) {
+  const s = SERVICES.find(x => x.id === id); if (!s) return;
+  document.getElementById('modalTitle').textContent = s.name;
+
+  document.getElementById('modalPills').innerHTML =
+    `<div class="svc-mpill svc-mpill--rate">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+      ${fmtR(s.rate)} / 1000
+    </div>
+    <div class="svc-mpill">Min: ${fmt(s.min)}</div>
+    <div class="svc-mpill">Max: ${fmt(s.max)}</div>
+    ${s.avgTime ? `<div class="svc-mpill">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 16 14"/></svg>
+      ${s.avgTime}
+    </div>` : ''}`;
+
+  document.getElementById('modalInfo').innerHTML =
+    Object.entries(s.info).map(([k, v]) =>
+      `<div class="svc-info-row"><span class="svc-info-key">${k}</span><span class="svc-info-val">${v}</span></div>`
+    ).join('');
+
+  document.getElementById('modalOrderBtn').href = `new-order.html?service=${s.id}`;
+  document.getElementById('svcModal').classList.add('is-open');
+}
+
+document.getElementById('modalClose').addEventListener('click', () => document.getElementById('svcModal').classList.remove('is-open'));
+document.getElementById('svcModal').addEventListener('click', e => { if (e.target.id === 'svcModal') e.target.classList.remove('is-open'); });
+
+/* ── Filter pills ── */
+document.querySelectorAll('#platformPills .pill').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('#platformPills .pill').forEach(b => b.classList.remove('is-active'));
+    btn.classList.add('is-active');
+    activePlat = btn.dataset.plat;
+    render();
+  });
+});
+
+/* ── Search ── */
+document.getElementById('svcSearch').addEventListener('input', e => { searchQ = e.target.value; render(); });
+
+/* ── Mobile nav ── */
+document.getElementById('menuToggle').addEventListener('click', () => document.getElementById('sidebar').classList.toggle('is-open'));
+document.getElementById('moreToggle').addEventListener('click', () => document.getElementById('moreSheetOverlay').classList.add('is-open'));
+document.getElementById('moreSheetOverlay').addEventListener('click', e => { if (e.target.id === 'moreSheetOverlay') e.currentTarget.classList.remove('is-open'); });
+
+/* ── Init ── */
+render();
+</script>
+</body>
+</html>
