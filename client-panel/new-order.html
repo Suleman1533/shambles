@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>New Order — Boostoraa</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+<div class="app">
+
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar__brand">
+      <div class="sidebar__brand-icon">B</div>
+      <span class="sidebar__brand-name">Boostoraa</span>
+    </div>
+    <nav class="sidebar__menu">
+      <a href="new-order.html" class="sidebar__item is-active">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2M9 5a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2M9 5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2"/></svg>
+        New order
+      </a>
+      <a href="services.html" class="sidebar__item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+        Services
+      </a>
+      <a href="orders.html" class="sidebar__item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        Orders
+      </a>
+      <a href="add-funds.html" class="sidebar__item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+        Add funds
+      </a>
+      <a href="api.html" class="sidebar__item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        API
+      </a>
+      <a href="affiliates.html" class="sidebar__item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        Affiliates
+      </a>
+      <a href="child-panel.html" class="sidebar__item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 9h6v6H9z"/></svg>
+        Child panel
+      </a>
+      <a href="mass-order.html" class="sidebar__item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+        Mass order
+      </a>
+      <a href="updates.html" class="sidebar__item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 2v6h-6M3 12a9 9 0 0 1 15-6.7L21 8M3 22v-6h6M21 12a9 9 0 0 1-15 6.7L3 16"/></svg>
+        Updates
+      </a>
+    </nav>
+    <div class="sidebar__footer">© 2026 Boostoraa</div>
+  </aside>
+
+  <div class="main">
+    <header class="topbar">
+      <button class="topbar__menu-toggle" id="menuToggle">☰</button>
+      <div class="topbar__right">
+        <select class="balance-pill" style="border:none;">
+          <option>PKR 20</option>
+          <option>USD $</option>
+          <option>AED د.إ</option>
+          <option>SAR ر.س</option>
+          <option>GBP £</option>
+          <option>INR ₹</option>
+          <option>CNY ¥</option>
+          <option>VND ₫</option>
+        </select>
+        <a href="account.html" class="topbar__link">Account</a>
+        <a href="../public/index.html" class="topbar__link">Logout</a>
+      </div>
+    </header>
+
+    <main class="page">
+      <div class="page__header">
+        <h1 class="page__title">New Order</h1>
+      </div>
+
+      <div class="page__grid">
+        <div>
+          <div class="card">
+            <div class="pill-group">
+              <button class="pill is-active">☰ All</button>
+              <button class="pill"><svg width="16" height="16" viewBox="0 0 24 24" fill="#1877F2"><path d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.79-4.69 4.53-4.69 1.31 0 2.68.24 2.68.24v2.97h-1.51c-1.49 0-1.96.93-1.96 1.89v2.25h3.33l-.53 3.49h-2.8V24C19.61 23.1 24 18.1 24 12.07z"/></svg> Facebook</button>
+              <button class="pill"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M16.6 5.8c-.9-1-1.5-2.3-1.5-3.8h-3.1v14.4a3.2 3.2 0 1 1-2.7-3.16v-3.16A6.3 6.3 0 1 0 15 16.3V9.4a7.5 7.5 0 0 0 4.4 1.4V7.7c-1.1 0-2.1-.4-2.8-1.1z" fill="#000"/></svg> TikTok</button>
+              <button class="pill"><svg width="16" height="16" viewBox="0 0 24 24"><defs><linearGradient id="igGrad2" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#FFDC80"/><stop offset="30%" stop-color="#FCAF45"/><stop offset="55%" stop-color="#E1306C"/><stop offset="80%" stop-color="#C13584"/><stop offset="100%" stop-color="#833AB4"/></linearGradient></defs><rect x="2" y="2" width="20" height="20" rx="6" fill="url(#igGrad2)"/><circle cx="12" cy="12" r="4.6" fill="none" stroke="#fff" stroke-width="1.6"/><circle cx="17.4" cy="6.6" r="1.2" fill="#fff"/></svg> Instagram</button>
+              <button class="pill"><svg width="16" height="16" viewBox="0 0 24 24" fill="#FF0000"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8z"/><path d="M9.6 15.5V8.5l6.3 3.5z" fill="#fff"/></svg> YouTube</button>
+            </div>
+
+            <div class="field">
+              <input type="text" class="input" placeholder="🔍 Search services...">
+            </div>
+
+            <div class="field">
+              <label class="field__label">Category</label>
+              <select class="select">
+                <option>Facebook Page Followers</option>
+                <option>Facebook Post Likes</option>
+                <option>Instagram Followers</option>
+                <option>TikTok Views</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label class="field__label">Service</label>
+              <select class="select">
+                <option>Facebook Followers | Hidden Data | All Type Profile &amp; Page | Low Drop | No Refill — Instant Start | Day 50K — PKR 78.54 per 1000</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label class="field__label">Description</label>
+              <div class="description-box">
+                <strong>Location:</strong> Global<br>
+                <strong>Quality:</strong> Hidden Accounts<br>
+                <strong>Start Time:</strong> 0–5 Minutes<br>
+                <strong>Speed:</strong> Day 50K<br>
+                <strong>Refill:</strong> No Refill ⚠️<br>
+                <strong>Drop Rate:</strong> Non Drop<br>
+                <strong>Example Link:</strong> Profile or Page Link<br><br>
+                <strong>Notes:</strong><br>
+                — In case of high demand, speed and start time may vary.<br>
+                — Do not place a second order on the same link before the first completes.
+              </div>
+            </div>
+
+            <div class="field">
+              <label class="field__label">Link</label>
+              <input type="text" class="input" placeholder="Paste profile or page link">
+            </div>
+
+            <div class="field">
+              <label class="field__label">Quantity</label>
+              <input type="number" class="input" placeholder="0">
+              <div class="field__hint">Min: 10 — Max: 1,000,000</div>
+            </div>
+
+            <div class="field">
+              <label class="field__label">Charge</label>
+              <input type="text" class="input" value="PKR 0.00" readonly>
+            </div>
+
+            <button class="btn btn-primary">Submit</button>
+          </div>
+        </div>
+
+        <div>
+          <div class="card promo-card">
+            <p>Join our WhatsApp channel to stay updated on new services and the best offers across all social media platforms.</p>
+            <span class="highlight">WhatsApp Channel</span>
+            <p>We also have aged, pre-created pages ideal for advertising — with 1K, 10K, and more followers already in place. Reach out on WhatsApp to find the right page for your needs.</p>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<a href="#" class="fab-whatsapp" aria-label="WhatsApp">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="white"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.38 5.07L2 22l5.07-1.33A9.94 9.94 0 0 0 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18c-1.6 0-3.1-.46-4.36-1.25l-.31-.19-3.01.79.8-2.93-.2-.32A7.93 7.93 0 0 1 4 12c0-4.41 3.59-8 8-8s8 3.59 8 8-3.59 8-8 8zm4.4-5.6c-.24-.12-1.43-.7-1.65-.78-.22-.08-.38-.12-.54.12-.16.24-.62.78-.76.94-.14.16-.28.18-.52.06-.24-.12-1.01-.37-1.92-1.18-.71-.63-1.19-1.41-1.33-1.65-.14-.24-.01-.37.11-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.74-1.78-.19-.46-.39-.4-.54-.41h-.46c-.16 0-.42.06-.64.3-.22.24-.84.82-.84 2s.86 2.32.98 2.48c.12.16 1.69 2.58 4.1 3.62.57.25 1.02.4 1.37.51.57.18 1.09.16 1.5.1.46-.07 1.43-.58 1.63-1.15.2-.56.2-1.04.14-1.15-.06-.1-.22-.16-.46-.28z"/></svg>
+</a>
+
+<!-- Mobile Bottom Navigation -->
+<nav class="bottom-nav">
+  <div class="bottom-nav__inner">
+    <a href="new-order.html" class="bottom-nav__item is-active">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2M9 5a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2M9 5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2"/></svg>
+      Order
+    </a>
+    <a href="services.html" class="bottom-nav__item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+      Services
+    </a>
+    <a href="orders.html" class="bottom-nav__item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+      Orders
+    </a>
+    <a href="add-funds.html" class="bottom-nav__item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+      Funds
+    </a>
+    <button class="bottom-nav__item" id="moreToggle" type="button">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></svg>
+      More
+    </button>
+  </div>
+</nav>
+
+<!-- More Sheet (remaining nav items on mobile) -->
+<div class="more-sheet-overlay" id="moreSheetOverlay">
+  <div class="more-sheet">
+    <div class="more-sheet__handle"></div>
+    <a href="api.html" class="more-sheet__item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+      API
+    </a>
+    <a href="affiliates.html" class="more-sheet__item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      Affiliates
+    </a>
+    <a href="child-panel.html" class="more-sheet__item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 9h6v6H9z"/></svg>
+      Child panel
+    </a>
+    <a href="mass-order.html" class="more-sheet__item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+      Mass order
+    </a>
+    <a href="updates.html" class="more-sheet__item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 2v6h-6M3 12a9 9 0 0 1 15-6.7L21 8M3 22v-6h6M21 12a9 9 0 0 1-15 6.7L3 16"/></svg>
+      Updates
+    </a>
+    <a href="account.html" class="more-sheet__item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+      Account
+    </a>
+  </div>
+</div>
+
+<script>
+  document.getElementById('menuToggle')?.addEventListener('click', () => {
+    document.getElementById('sidebar').classList.toggle('is-open');
+  });
+  document.getElementById('moreToggle')?.addEventListener('click', () => {
+    document.getElementById('moreSheetOverlay').classList.add('is-open');
+  });
+  document.getElementById('moreSheetOverlay')?.addEventListener('click', (e) => {
+    if (e.target.id === 'moreSheetOverlay') {
+      e.currentTarget.classList.remove('is-open');
+    }
+  });
+</script>
+</body>
+</html>
